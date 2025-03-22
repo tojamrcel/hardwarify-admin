@@ -1,5 +1,7 @@
+import { BrowserRouter } from "react-router";
+
 function App() {
-  return <div>Hardwarify Admin Panel</div>;
+  return <BrowserRouter></BrowserRouter>;
 }
 
 export default App;
