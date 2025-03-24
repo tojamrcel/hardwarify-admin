@@ -14,7 +14,7 @@ function Layout() {
           <div className="flex h-20 w-full items-center justify-center text-3xl font-semibold tracking-tight text-gray-800">
             hardwarify
           </div>
-          <ul className="flex flex-col gap-8">
+          <nav className="flex flex-col gap-8">
             <NavLink
               to="/dashboard"
               className="group flex h-8 items-center gap-2 rounded-md px-2 py-6 text-xl text-gray-700 transition-all duration-200 hover:bg-gray-200"
@@ -36,7 +36,7 @@ function Layout() {
               <LuBox className="text-2xl transition-all duration-300 group-hover:text-red-800" />
               <span className="group-hover:text-gray-800">Orders</span>
             </NavLink>
-          </ul>
+          </nav>
           <div className="my-4 mt-auto flex flex-col gap-4">
             <div className="flex items-center gap-4 text-lg text-gray-600 antialiased">
               <IoMdPerson />
