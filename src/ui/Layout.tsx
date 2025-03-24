@@ -13,7 +13,7 @@ function Layout() {
             hardwarify
           </div>
           <Navigation />
-          <div className="my-4 mt-auto flex flex-col gap-4">
+          <div className="my-4 mt-auto flex flex-col">
             <div className="flex items-center justify-center gap-4 text-lg text-gray-600 antialiased">
               <IoMdPerson />
               <span>Logged as USERNAME</span>
@@ -29,7 +29,7 @@ function Layout() {
             {/* <MdLightMode /> */}
           </button>
         </div>
-        <div className="col-start-2 rounded-md bg-gray-200 p-16">
+        <div className="col-start-2 p-16">
           <Outlet />
         </div>
       </div>
