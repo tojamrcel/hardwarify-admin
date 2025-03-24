@@ -4,6 +4,7 @@ import { IoMdPerson } from "react-icons/io";
 import { LuBox } from "react-icons/lu";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { NavLink, Outlet } from "react-router";
+import Button from "./Button";
 
 function Layout() {
   return (
@@ -42,9 +43,7 @@ function Layout() {
               <span>Logged as USERNAME</span>
             </div>
             <div className="flex items-center justify-center">
-              <button className="transition-color rounded-md bg-red-700 px-4 py-2 font-semibold text-stone-100 uppercase duration-300 hover:cursor-pointer hover:bg-red-800">
-                Logout
-              </button>
+              <Button>Logout</Button>
             </div>
           </div>
         </div>
