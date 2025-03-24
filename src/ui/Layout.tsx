@@ -8,13 +8,13 @@ function Layout() {
   return (
     <div>
       <div className="grid h-screen grid-cols-[auto_1fr] grid-rows-[auto_1fr]">
-        <div className="row-span-full flex w-64 flex-col gap-8 bg-stone-100 px-4">
+        <div className="row-span-full flex w-72 flex-col gap-8 bg-stone-100 px-6">
           <div className="flex h-20 w-full items-center justify-center text-3xl font-semibold tracking-tight text-gray-800">
             hardwarify
           </div>
           <Navigation />
           <div className="my-4 mt-auto flex flex-col gap-4">
-            <div className="flex items-center gap-4 text-lg text-gray-600 antialiased">
+            <div className="flex items-center justify-center gap-4 text-lg text-gray-600 antialiased">
               <IoMdPerson />
               <span>Logged as USERNAME</span>
             </div>
