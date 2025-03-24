@@ -18,8 +18,8 @@ function App() {
           <Route path="order/:orderId" element={<Order />} />
           <Route path="products" element={<Products />} />
           <Route path="*" element={<PageNotFound />} />
-          <Route path="login" element={<Login />} />
         </Route>
+        <Route path="login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
