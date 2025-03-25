@@ -1,4 +1,5 @@
 import ProductItem from "../features/products/ProductItem";
+import Button from "../ui/Button";
 import Title from "../ui/Title";
 
 function Products() {
@@ -9,9 +10,7 @@ function Products() {
         <ProductItem />
       </ul>
       <div className="ml-auto">
-        <button className="border-b-2 border-transparent font-semibold text-gray-600 transition-all duration-150 hover:cursor-pointer hover:border-gray-500">
-          Add new item
-        </button>
+        <Button type="secondary">Add new item</Button>
       </div>
     </div>
   );
