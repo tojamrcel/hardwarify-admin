@@ -6,6 +6,7 @@ import PageNotFound from "./pages/PageNotFound";
 import Products from "./pages/Products";
 import Login from "./pages/Login";
 import Layout from "./ui/Layout";
+import AddNewProduct from "./pages/AddNewProduct";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="orders" element={<Orders />} />
           <Route path="order/:orderId" element={<Order />} />
           <Route path="products" element={<Products />} />
+          <Route path="products/add" element={<AddNewProduct />} />
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="*" element={<PageNotFound />} />
