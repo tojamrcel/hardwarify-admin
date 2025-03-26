@@ -1,9 +1,11 @@
 import Title from "../ui/Title";
+import AddProductForm from "../features/products/AddProductForm";
 
 function AddNewProduct() {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex w-full flex-col gap-2">
       <Title>Add new product</Title>
+      <AddProductForm />
     </div>
   );
 }

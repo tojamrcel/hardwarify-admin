@@ -1,4 +1,4 @@
-function Input({ type }: { type: "email" | "password" }) {
+function Input({ type }: { type: "email" | "password" | "text" | "number" }) {
   return (
     <input
       type={type}
