@@ -1,5 +1,6 @@
 import { IoMdClose } from "react-icons/io";
 import Navigation from "./Navigation";
+import RoundedBtn from "./RoundedBtn";
 
 interface MobileNavProps {
   open: boolean;
@@ -15,12 +16,11 @@ function MobileNav({ open, closeFn }: MobileNavProps) {
         <h1 className="mt-2 text-3xl font-semibold tracking-tight text-gray-800 lg:hidden">
           hardwarify
         </h1>
-        <button
-          onClick={closeFn}
-          className="transition-color mt-2 ml-auto flex h-12 w-12 items-center justify-center rounded-full text-3xl text-gray-700 duration-200 hover:cursor-pointer hover:bg-gray-200 hover:text-gray-800"
-        >
-          <IoMdClose />
-        </button>
+        <div className="mt-2 ml-auto">
+          <RoundedBtn onClick={closeFn} size={12} textSize="3xl">
+            <IoMdClose />
+          </RoundedBtn>
+        </div>
       </div>
       <div className="w-full">
         <Navigation />

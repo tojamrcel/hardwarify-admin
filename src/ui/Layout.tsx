@@ -5,6 +5,7 @@ import Button from "./Button";
 import Navigation from "./Navigation";
 import MobileNav from "./MobileNav";
 import { useState } from "react";
+import RoundedBtn from "./RoundedBtn";
 
 function Layout() {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState<boolean>(false);
@@ -36,19 +37,20 @@ function Layout() {
           </div>
         </div>
         <div className="flex h-20 items-center bg-stone-100 px-8">
-          <button
-            onClick={handleOpenMobileNav}
-            className="transition-color mr-4 flex h-12 w-12 items-center justify-center rounded-full text-2xl text-gray-700 duration-200 hover:cursor-pointer hover:bg-gray-200 hover:text-gray-800 lg:hidden"
-          >
-            <IoMdMenu />
-          </button>
+          <div className="mr-4 lg:hidden">
+            <RoundedBtn size={12} textSize="2xl" onClick={handleOpenMobileNav}>
+              <IoMdMenu />
+            </RoundedBtn>
+          </div>
           <h1 className="text-3xl font-semibold tracking-tight text-gray-800 lg:hidden">
             hardwarify
           </h1>
-          <button className="transition-color ml-auto flex h-12 w-12 items-center justify-center rounded-full text-2xl text-gray-700 duration-200 hover:cursor-pointer hover:bg-gray-200 hover:text-gray-800">
-            <MdDarkMode />
-            {/* <MdLightMode /> */}
-          </button>
+          <div className="ml-auto">
+            <RoundedBtn size={10} textSize="2xl">
+              <MdDarkMode />
+              {/* <MdLightMode /> */}
+            </RoundedBtn>
+          </div>
         </div>
         <div className="col-start-2 p-16">
           <Outlet />

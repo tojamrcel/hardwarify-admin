@@ -1,4 +1,5 @@
 import { HiDotsVertical } from "react-icons/hi";
+import RoundedBtn from "../../ui/RoundedBtn";
 
 function ProductItem() {
   return (
@@ -8,9 +9,9 @@ function ProductItem() {
         <h2 className="font-semibold text-gray-600">Product name</h2>
         <p className="text-gray-500">xxx$</p>
         <div className="absolute top-3 right-3">
-          <button className="flex h-8 w-8 items-center justify-center rounded-full hover:cursor-pointer hover:bg-gray-200">
-            <HiDotsVertical className="text-gray-600" />
-          </button>
+          <RoundedBtn size={8} textSize="md">
+            <HiDotsVertical />
+          </RoundedBtn>
         </div>
       </div>
     </li>
