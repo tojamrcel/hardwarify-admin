@@ -28,6 +28,10 @@ function AddProductForm() {
         <Input type="number" />
       </FormRow>
       <FormRow>
+        <label className="font-semibold text-gray-600">Availability</label>
+        <Input type="number" />
+      </FormRow>
+      <FormRow>
         <label className="font-semibold text-gray-600">Image</label>
         <input
           type="file"
