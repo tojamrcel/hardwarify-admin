@@ -57,6 +57,10 @@ function Layout() {
         </div>
         <MobileNav open={isMobileNavOpen} closeFn={handleCloseMobileNav} />
       </div>
+
+      {isMobileNavOpen && (
+        <div className="absolute top-0 left-0 h-screen max-h-full w-screen max-w-full backdrop-blur-xs lg:hidden"></div>
+      )}
     </div>
   );
 }
