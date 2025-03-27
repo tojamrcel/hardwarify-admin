@@ -3,8 +3,20 @@ import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { Outlet } from "react-router";
 import Button from "./Button";
 import Navigation from "./Navigation";
+import MobileNav from "./MobileNav";
+import { useState } from "react";
 
 function Layout() {
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState<boolean>(false);
+
+  function handleOpenMobileNav() {
+    setIsMobileNavOpen(true);
+  }
+
+  function handleCloseMobileNav() {
+    setIsMobileNavOpen(false);
+  }
+
   return (
     <div>
       <div className="h-screen grid-cols-[auto_1fr] grid-rows-[auto_1fr] lg:grid">
@@ -24,7 +36,10 @@ function Layout() {
           </div>
         </div>
         <div className="flex h-20 items-center bg-stone-100 px-8">
-          <button className="transition-color mr-4 flex h-12 w-12 items-center justify-center rounded-full text-2xl text-gray-700 duration-200 hover:cursor-pointer hover:bg-gray-200 hover:text-gray-800 lg:hidden">
+          <button
+            onClick={handleOpenMobileNav}
+            className="transition-color mr-4 flex h-12 w-12 items-center justify-center rounded-full text-2xl text-gray-700 duration-200 hover:cursor-pointer hover:bg-gray-200 hover:text-gray-800 lg:hidden"
+          >
             <IoMdMenu />
           </button>
           <h1 className="text-3xl font-semibold tracking-tight text-gray-800 lg:hidden">
@@ -38,6 +53,7 @@ function Layout() {
         <div className="col-start-2 p-16">
           <Outlet />
         </div>
+        <MobileNav open={isMobileNavOpen} closeFn={handleCloseMobileNav} />
       </div>
     </div>
   );
