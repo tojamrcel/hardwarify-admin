@@ -36,13 +36,13 @@ function Navigation() {
       </NavLink>
       <NavLink
         to="/orders"
-        className={`group flex h-8 items-center gap-2 rounded-md px-2 py-6 text-xl text-gray-700 transition-all duration-200 hover:bg-gray-200 ${pathname.startsWith("/orders") ? "bg-gray-200" : ""}`}
+        className={`group flex h-8 items-center gap-2 rounded-md px-2 py-6 text-xl text-gray-700 transition-all duration-200 hover:bg-gray-200 ${pathname.startsWith("/order") ? "bg-gray-200" : ""}`}
       >
         <LuBox
-          className={`text-2xl transition-all duration-300 group-hover:text-red-800 ${pathname.startsWith("/orders") ? "text-red-800" : ""}`}
+          className={`text-2xl transition-all duration-300 group-hover:text-red-800 ${pathname.startsWith("/order") ? "text-red-800" : ""}`}
         />
         <span
-          className={`group-hover:text-gray-800 ${pathname.startsWith("/orders") ? "text-gray-800" : ""}`}
+          className={`group-hover:text-gray-800 ${pathname.startsWith("/order") ? "text-gray-800" : ""}`}
         >
           Orders
         </span>
