@@ -1,10 +1,10 @@
+import { useState } from "react";
 import { IoMdMenu, IoMdPerson } from "react-icons/io";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { Outlet } from "react-router";
 import Button from "./Button";
 import Navigation from "./Navigation";
 import MobileNav from "./MobileNav";
-import { useState } from "react";
 import RoundedBtn from "./RoundedBtn";
 
 function Layout() {
@@ -20,7 +20,7 @@ function Layout() {
 
   return (
     <div>
-      <div className="h-screen grid-cols-[auto_1fr] grid-rows-[auto_1fr] lg:grid">
+      <div className="h-screen max-h-full grid-cols-[auto_1fr] grid-rows-[auto_1fr] lg:grid">
         <div className="row-span-full hidden w-72 flex-col gap-8 bg-stone-100 px-6 lg:flex">
           <div className="flex h-20 w-full items-center justify-center text-3xl font-semibold tracking-tight text-gray-800">
             hardwarify
@@ -52,7 +52,7 @@ function Layout() {
             </RoundedBtn>
           </div>
         </div>
-        <div className="col-start-2 p-16">
+        <div className="col-start-2 h-[90vh] overflow-auto px-8 py-2 lg:p-16">
           <Outlet />
         </div>
         <MobileNav open={isMobileNavOpen} closeFn={handleCloseMobileNav} />
