@@ -1,6 +1,7 @@
 import { IoMdClose } from "react-icons/io";
 import Navigation from "./Navigation";
 import RoundedBtn from "./RoundedBtn";
+import UserInfo from "./UserInfo";
 
 interface MobileNavProps {
   open: boolean;
@@ -25,6 +26,7 @@ function MobileNav({ open, closeFn }: MobileNavProps) {
       <div className="w-full">
         <Navigation />
       </div>
+      <UserInfo />
     </div>
   );
 }

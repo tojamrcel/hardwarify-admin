@@ -1,6 +1,5 @@
-import { IoMdPerson } from "react-icons/io";
-import Button from "./Button";
 import Navigation from "./Navigation";
+import UserInfo from "./UserInfo";
 
 function AppMenu() {
   return (
@@ -9,15 +8,7 @@ function AppMenu() {
         hardwarify
       </div>
       <Navigation />
-      <div className="my-4 mt-auto flex flex-col gap-2">
-        <div className="flex items-center justify-center gap-4 text-lg text-gray-600 antialiased">
-          <IoMdPerson />
-          <span>Logged as USERNAME</span>
-        </div>
-        <div className="flex items-center justify-center">
-          <Button>Logout</Button>
-        </div>
-      </div>
+      <UserInfo />
     </div>
   );
 }
