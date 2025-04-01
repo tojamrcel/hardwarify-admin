@@ -8,7 +8,6 @@ export async function login() {
   });
 
   if (error) throw new Error("Invalid credentials");
-
   return data.user;
 }
 

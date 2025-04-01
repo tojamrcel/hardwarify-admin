@@ -6,15 +6,18 @@ function useLogin() {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
-  const { mutate: login } = useMutation({
+  const { mutate: login, error } = useMutation({
     mutationFn: APIlogin,
     onSuccess: (user) => {
       queryClient.setQueryData(["user"], user);
       navigate("/", { replace: true });
     },
+    onError: () => {
+      throw new Error("Invalid credentials");
+    },
   });
 
-  return { login };
+  return { login, error };
 }
 
 export default useLogin;
