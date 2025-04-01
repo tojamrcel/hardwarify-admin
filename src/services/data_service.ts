@@ -2,18 +2,28 @@ import supabase from "./supabase";
 
 // auth
 export async function login() {
-  const { error } = await supabase.auth.signInWithPassword({
+  const { data, error } = await supabase.auth.signInWithPassword({
     email: "admin@admin.com",
     password: "admin1234",
   });
 
   if (error) throw new Error("Invalid credentials");
+
+  return data.user;
 }
 
 export async function logout() {
   const { error } = await supabase.auth.signOut();
 
   if (error) throw new Error("An error occurred while logging out");
+}
+
+export async function getUser() {
+  const { data, error } = await supabase.auth.getUser();
+
+  if (error) throw new Error("Couldn't fetch user data");
+
+  return data?.user;
 }
 
 // products

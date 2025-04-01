@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Layout from "./ui/Layout";
 import AddNewProduct from "./pages/AddNewProduct";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Protected from "./ui/Protected";
 
 const queryClient = new QueryClient();
 
@@ -16,7 +17,13 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
-          <Route element={<Layout />}>
+          <Route
+            element={
+              <Protected>
+                <Layout />
+              </Protected>
+            }
+          >
             <Route index element={<Navigate replace to="/dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="orders" element={<Orders />} />
