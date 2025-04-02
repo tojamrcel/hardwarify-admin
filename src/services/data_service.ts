@@ -26,6 +26,16 @@ export async function getUser() {
   return data?.user;
 }
 
+export async function getProfile() {
+  const { data, error } = await supabase
+    .from("profiles")
+    .select("firstName")
+    .single();
+  if (error) throw new Error("Couldn't fetch profile data");
+
+  return data;
+}
+
 // products
 export async function getProducts() {
   const { data, error } = await supabase.from("products").select("*");
