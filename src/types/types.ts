@@ -8,3 +8,8 @@ export interface Product {
   discount: number | null;
   availability: number;
 }
+
+export interface LoginData {
+  email: string;
+  password: string;
+}

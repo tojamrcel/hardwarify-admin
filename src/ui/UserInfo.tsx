@@ -1,5 +1,5 @@
 import { IoMdPerson } from "react-icons/io";
-import Button from "./Button";
+import SignOutButton from "../features/auth/SignOutButton";
 
 function UserInfo() {
   return (
@@ -9,7 +9,7 @@ function UserInfo() {
         <span>Logged as USERNAME</span>
       </div>
       <div className="flex items-center justify-center">
-        <Button>Logout</Button>
+        <SignOutButton />
       </div>
     </div>
   );

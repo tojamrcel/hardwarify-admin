@@ -1,10 +1,11 @@
+import { LoginData } from "../types/types";
 import supabase from "./supabase";
 
 // auth
-export async function login() {
+export async function login({ email, password }: LoginData) {
   const { data, error } = await supabase.auth.signInWithPassword({
-    email: "admin@admin.com",
-    password: "admin1234",
+    email: email,
+    password: password,
   });
 
   if (error) throw new Error("Invalid credentials");
