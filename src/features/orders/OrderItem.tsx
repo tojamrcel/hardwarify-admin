@@ -3,14 +3,14 @@ import Button from "../../ui/Button";
 import { Order } from "../../types/types";
 
 function OrderItem({ order }: { order: Order }) {
-  const { id, total_price: price } = order;
+  const { id, total_price: price, status } = order;
 
   return (
     <li className="flex h-32 flex-col overflow-hidden rounded-md bg-stone-100">
       <div className="relative flex h-full flex-col gap-2 p-4">
         <div className="flex items-center gap-4">
           <h2 className="text-xl font-semibold text-gray-600">Order #{id}</h2>
-          <OrderStatusBadge status="pending" />
+          <OrderStatusBadge status={status} />
         </div>
         <div className="flex max-w-3/4 gap-2 overflow-clip">
           <div className="min-h-14 min-w-14 rounded-md bg-red-700"></div>

@@ -1,6 +1,5 @@
-import { LoginData } from "../types/types";
+import { LoginData, Order } from "../types/types";
 import supabase from "./supabase";
-
 // auth
 export async function login({ email, password }: LoginData) {
   const { data, error } = await supabase.auth.signInWithPassword({
@@ -56,9 +55,8 @@ export async function getProductById(id: string) {
 
   return data;
 }
-
 // orders
-export async function getOrders() {
+export async function getOrders(): Promise<Order[]> {
   const { data, error } = await supabase.from("orders").select("*");
 
   if (error) throw new Error("Couldn't fetch orders.");
@@ -66,7 +64,7 @@ export async function getOrders() {
   return data;
 }
 
-export async function getOrderById(id: string) {
+export async function getOrderById(id: string): Promise<Order> {
   const { data, error } = await supabase
     .from("orders")
     .select("*")
