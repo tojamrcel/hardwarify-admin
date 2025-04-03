@@ -1,3 +1,5 @@
+export type Status = "pending" | "sent" | "delivered";
+
 export interface Product {
   id: number;
   product_name: string;
@@ -19,11 +21,11 @@ export interface Order {
   id: number;
   created_at: string;
   email: string;
-  status: "pending" | "sent" | "delivered";
+  status: Status;
   total_price: number;
   user_id: string;
-  fisrt_name: string | null;
+  first_name: string | null;
   last_name: string | null;
   address: string;
-  orderItems: Product[];
+  order_items: Product[];
 }

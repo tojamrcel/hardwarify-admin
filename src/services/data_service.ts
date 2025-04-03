@@ -100,20 +100,39 @@ export async function getOrders(): Promise<Order[]> {
       },
     );
 
-    return { ...order, orderItems };
+    return { ...order, order_items: orderItems };
   });
 
   return ordersWithProducts;
 }
 
-export async function getOrderById(id: string): Promise<Order> {
-  const { data, error } = await supabase
+export async function getOrderById(id: number): Promise<Order> {
+  const { data: order, error: orderError } = await supabase
     .from("orders")
-    .select("*")
+    .select("*, order_items(product_id, quantity)")
     .eq("id", id)
     .single();
 
-  if (error) throw new Error("Couldn't find order with given id");
+  if (orderError) throw new Error("Couldn't find order with given id");
 
-  return data;
+  const ids = order.order_items.map(
+    (item: { product_id: number; quantity: number }) => item.product_id,
+  );
+  const { data: products, error: productsError } = await supabase
+    .from("products")
+    .select("*")
+    .in("id", ids);
+
+  if (productsError) throw new Error("Couldn't fetch products.");
+
+  const orderItems = order.order_items.map(
+    (item: { product_id: number; quantity: number }) => {
+      const product = products.find(
+        (product) => product.id === item.product_id,
+      );
+      return { ...product, quantity: item.quantity };
+    },
+  );
+
+  return { ...order, order_items: orderItems };
 }

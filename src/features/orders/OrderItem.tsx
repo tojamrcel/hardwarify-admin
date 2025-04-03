@@ -3,7 +3,7 @@ import Button from "../../ui/Button";
 import { Order } from "../../types/types";
 
 function OrderItem({ order }: { order: Order }) {
-  const { id, total_price: price, status, orderItems } = order;
+  const { id, total_price: price, status, order_items: orderItems } = order;
 
   return (
     <li className="flex h-32 flex-col overflow-hidden rounded-md bg-stone-100">
@@ -17,6 +17,8 @@ function OrderItem({ order }: { order: Order }) {
             <img
               src={item.image}
               alt={item.product_name}
+              width={56}
+              height={56}
               className="h-14 w-14 rounded-md"
               key={item.id}
             />

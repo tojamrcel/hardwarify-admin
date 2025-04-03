@@ -1,5 +1,7 @@
+import { Status } from "../../types/types";
+
 interface OrderStatusBadgeProps {
-  status: "pending" | "sent" | "delivered";
+  status: Status;
 }
 
 function OrderStatusBadge({ status }: OrderStatusBadgeProps) {
