@@ -1,14 +1,15 @@
 import OrderStatusBadge from "./OrderStatusBadge";
 import Button from "../../ui/Button";
+import { Order } from "../../types/types";
 
-function OrderItem() {
+function OrderItem({ order }: { order: Order }) {
+  const { id, total_price: price } = order;
+
   return (
     <li className="flex h-32 flex-col overflow-hidden rounded-md bg-stone-100">
       <div className="relative flex h-full flex-col gap-2 p-4">
         <div className="flex items-center gap-4">
-          <h2 className="text-xl font-semibold text-gray-600">
-            Order #21313121282834283
-          </h2>
+          <h2 className="text-xl font-semibold text-gray-600">Order #{id}</h2>
           <OrderStatusBadge status="pending" />
         </div>
         <div className="flex max-w-3/4 gap-2 overflow-clip">
@@ -20,7 +21,7 @@ function OrderItem() {
           <Button type="secondary">Manage order</Button>
         </div>
         <div className="absolute top-4 right-4 text-lg">
-          <p className="text-gray-500">xxx$</p>
+          <p className="text-gray-500">{price}$</p>
         </div>
       </div>
     </li>
