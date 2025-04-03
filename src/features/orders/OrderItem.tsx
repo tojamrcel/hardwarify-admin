@@ -3,7 +3,7 @@ import Button from "../../ui/Button";
 import { Order } from "../../types/types";
 
 function OrderItem({ order }: { order: Order }) {
-  const { id, total_price: price, status } = order;
+  const { id, total_price: price, status, orderItems } = order;
 
   return (
     <li className="flex h-32 flex-col overflow-hidden rounded-md bg-stone-100">
@@ -13,9 +13,14 @@ function OrderItem({ order }: { order: Order }) {
           <OrderStatusBadge status={status} />
         </div>
         <div className="flex max-w-3/4 gap-2 overflow-clip">
-          <div className="min-h-14 min-w-14 rounded-md bg-red-700"></div>
-          <div className="min-h-14 min-w-14 rounded-md bg-red-700"></div>
-          <div className="min-h-14 min-w-14 rounded-md bg-red-700"></div>
+          {orderItems.map((item) => (
+            <img
+              src={item.image}
+              alt={item.product_name}
+              className="h-14 w-14 rounded-md"
+              key={item.id}
+            />
+          ))}
         </div>
         <div className="absolute right-3 bottom-3">
           <Button type="secondary">Manage order</Button>

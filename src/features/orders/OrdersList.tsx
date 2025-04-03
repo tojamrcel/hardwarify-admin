@@ -3,7 +3,6 @@ import useOrders from "./useOrders";
 
 function OrdersList() {
   const { orders, isLoading } = useOrders();
-  console.log(orders);
   return (
     <ul className="mt-2 flex max-w-full flex-col gap-4">
       {isLoading && <div>Loading...</div>}

@@ -7,6 +7,7 @@ export interface Product {
   category: string;
   discount: number | null;
   availability: number;
+  quantity?: number;
 }
 
 export interface LoginData {
