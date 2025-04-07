@@ -25,7 +25,9 @@ function OrderItem({ order }: { order: Order }) {
           ))}
         </div>
         <div className="absolute right-3 bottom-3">
-          <Button type="secondary">Manage order</Button>
+          <Button link={`/order/${id}`} type="secondary">
+            Manage order
+          </Button>
         </div>
         <div className="absolute top-4 right-4 text-lg">
           <p className="text-gray-500">{price}$</p>
