@@ -8,6 +8,7 @@ import {
 import { HiDotsVertical } from "react-icons/hi";
 import RoundedBtn from "./RoundedBtn";
 import { IconType } from "react-icons";
+import { useClickOutside } from "../hooks/useClickOutside";
 
 interface MenuContextType {
   openId: string;
@@ -55,11 +56,15 @@ function Toggle({ id }: { id: string }) {
 }
 
 function List({ id, children }: { id: string; children: ReactNode }) {
-  const { openId } = useContext(MenuContext)!;
+  const { openId, close } = useContext(MenuContext)!;
+  const ref = useClickOutside<HTMLUListElement>(close);
 
   if (id !== openId) return null;
   return (
-    <ul className="absolute top-12 -right-8 z-10 flex flex-col overflow-clip rounded-md bg-stone-100 shadow-sm">
+    <ul
+      ref={ref}
+      className="absolute top-12 -right-8 z-10 flex flex-col overflow-clip rounded-md bg-stone-100 shadow-sm"
+    >
       {children}
     </ul>
   );
