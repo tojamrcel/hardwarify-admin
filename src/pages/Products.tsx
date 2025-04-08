@@ -8,7 +8,9 @@ function Products() {
       <Title>Products</Title>
       <ProductsList />
       <div className="ml-auto">
-        <Button type="secondary">Add new item</Button>
+        <Button link="/products/add" type="secondary">
+          Add new item
+        </Button>
       </div>
     </div>
   );
