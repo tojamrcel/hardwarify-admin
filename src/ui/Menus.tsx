@@ -40,16 +40,20 @@ function Menu({ children }: { children: ReactNode }) {
 function Toggle({ id }: { id: string }) {
   const { open, close, openId } = useContext(MenuContext)!;
 
-  function handleOpen() {
+  function handleToggle(e: React.MouseEvent<HTMLButtonElement>) {
+    e.stopPropagation();
+
     if (openId === "" || openId !== id) {
       open(id);
+      console.log(id);
+      console.log(openId);
     } else if (openId === id) {
       close();
     }
   }
 
   return (
-    <RoundedBtn size={8} textSize="md" onClick={handleOpen}>
+    <RoundedBtn size={8} textSize="md" onClick={handleToggle}>
       <HiDotsVertical />
     </RoundedBtn>
   );

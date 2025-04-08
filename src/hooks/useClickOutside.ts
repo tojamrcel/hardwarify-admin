@@ -10,10 +10,10 @@ export function useClickOutside<T extends HTMLElement>(
       if (ref.current && !ref.current.contains(e.target as Node)) handleClick();
     }
 
-    document.addEventListener("click", handleOutsideClick, true);
+    document.addEventListener("click", handleOutsideClick);
 
     return () => document.removeEventListener("click", handleOutsideClick);
-  }, [handleClick]);
+  }, [handleClick, ref]);
 
   return ref;
 }

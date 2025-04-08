@@ -4,7 +4,7 @@ interface RoundedBtnProps {
   children: ReactNode;
   size: number;
   textSize: "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl";
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 function RoundedBtn({ children, size, textSize, onClick }: RoundedBtnProps) {
