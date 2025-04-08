@@ -1,4 +1,5 @@
 import { Status } from "../../types/types";
+import OrderActions from "./OrderActions";
 
 interface OrderSummaryProps {
   status: Status;
@@ -26,15 +27,7 @@ function OrderSummary({ status, price }: OrderSummaryProps) {
         </div>
       </div>
       <div className="mt-2 flex flex-col items-start gap-4">
-        <button className="w-48 rounded-md bg-green-600 px-2 py-2 font-semibold text-stone-100 transition-all duration-200 hover:cursor-pointer hover:bg-green-700">
-          SET AS DELIVERED
-        </button>
-        <button className="w-48 rounded-md bg-yellow-600 px-2 py-2 font-semibold text-stone-100 transition-all duration-200 hover:cursor-pointer hover:bg-yellow-700">
-          SET AS SENT
-        </button>
-        <button className="w-48 rounded-md bg-red-700 px-2 py-2 font-semibold text-stone-100 transition-all duration-200 hover:cursor-pointer hover:bg-red-800">
-          CANCEL ORDER
-        </button>
+        <OrderActions status={status} />
       </div>
     </div>
   );
