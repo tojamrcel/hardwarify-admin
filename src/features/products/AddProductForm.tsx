@@ -1,10 +1,26 @@
-import Input from "../../ui/Input";
-import FormRow from "../../ui/FormRow";
+import { useForm } from "react-hook-form";
+import { Product } from "../../types/types";
 import Button from "../../ui/Button";
+import FormRow from "../../ui/FormRow";
+import Input from "../../ui/Input";
 
 function AddProductForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Product>();
+  console.log(errors);
+
+  function onSubmit(data: Product) {
+    console.log(data);
+  }
+
   return (
-    <form className="flex w-1/2 flex-col gap-2">
+    <form
+      className="flex w-1/2 flex-col gap-2"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <FormRow>
         <label className="font-semibold text-gray-600">Product name</label>
         <Input type="text" />

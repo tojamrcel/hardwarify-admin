@@ -1,5 +1,6 @@
 import { LoginData, Order, Product } from "../types/types";
 import supabase from "./supabase";
+
 // auth
 export async function login({ email, password }: LoginData) {
   const { data, error } = await supabase.auth.signInWithPassword({
@@ -66,6 +67,8 @@ export async function getProductsByIds(ids: number[]): Promise<Product[]> {
 
   return data;
 }
+
+export async function createProduct(product: Product) {}
 
 // orders
 export async function getOrders(): Promise<Order[]> {
