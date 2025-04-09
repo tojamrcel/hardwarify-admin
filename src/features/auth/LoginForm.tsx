@@ -1,7 +1,8 @@
 import Input from "../../ui/Input";
 import Button from "../../ui/Button";
 import useLogin from "./useLogin";
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
+import { LoginData } from "../../types/types";
 
 function LoginForm() {
   const { login, error } = useLogin();
@@ -9,11 +10,10 @@ function LoginForm() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<LoginData>();
 
-  function onSubmit(data: FieldValues) {
-    const { email, password } = data;
-    login({ email, password });
+  function onSubmit(data: LoginData) {
+    login(data);
   }
 
   return (
