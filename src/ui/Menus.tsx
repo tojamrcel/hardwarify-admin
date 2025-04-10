@@ -45,8 +45,6 @@ function Toggle({ id }: { id: string }) {
 
     if (openId === "" || openId !== id) {
       open(id);
-      console.log(id);
-      console.log(openId);
     } else if (openId === id) {
       close();
     }
