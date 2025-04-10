@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Product } from "../../types/types";
+import { NewProduct } from "../../types/types";
 import Button from "../../ui/Button";
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
@@ -11,9 +11,9 @@ function AddProductForm() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Product>();
+  } = useForm<NewProduct>();
 
-  function onSubmit(data: Product) {
+  function onSubmit(data: NewProduct) {
     console.log(data);
   }
 

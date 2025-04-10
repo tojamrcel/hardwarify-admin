@@ -12,6 +12,16 @@ export interface Product {
   quantity?: number;
 }
 
+export interface NewProduct {
+  product_name: string;
+  description: string;
+  regular_price: number;
+  image: File;
+  category: string;
+  discount: number | null;
+  availability: number;
+}
+
 export interface LoginData {
   email: string;
   password: string;
