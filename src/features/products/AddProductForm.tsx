@@ -5,8 +5,11 @@ import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 import Label from "../../ui/Label";
 import FormError from "../../ui/FormError";
+import useCategories from "./useCategories";
 
 function AddProductForm() {
+  const { categories, error, isLoading } = useCategories();
+
   const {
     register,
     handleSubmit,
@@ -54,7 +57,11 @@ function AddProductForm() {
             required: "Category is required",
           })}
         >
-          <option value="mobile_devices">mobile devices</option>
+          {categories?.map((cat) => (
+            <option value={cat} key={cat}>
+              {cat}
+            </option>
+          ))}
         </select>
         {errors.category && <FormError>{errors.category?.message}</FormError>}
       </FormRow>

@@ -3,6 +3,8 @@ import Button from "../../ui/Button";
 import useLogin from "./useLogin";
 import { useForm } from "react-hook-form";
 import { LoginData } from "../../types/types";
+import Label from "../../ui/Label";
+import FormError from "../../ui/FormError";
 
 function LoginForm() {
   const { login, error } = useLogin();
@@ -21,7 +23,7 @@ function LoginForm() {
       onSubmit={handleSubmit(onSubmit)}
       className="flex w-90 flex-col gap-2"
     >
-      <label className="font-semibold text-gray-500">Email</label>
+      <Label>Email</Label>
       <div className="flex flex-col">
         <Input
           type="email"
@@ -34,12 +36,10 @@ function LoginForm() {
           })}
         />
         {errors?.email && (
-          <span className="text-sm text-red-800">
-            {errors.email.message?.toString()}
-          </span>
+          <FormError>{errors.email.message?.toString()}</FormError>
         )}
       </div>
-      <label className="font-semibold text-gray-500">Password</label>
+      <Label>Password</Label>
       <div className="flex flex-col">
         <Input
           type="password"
@@ -48,9 +48,7 @@ function LoginForm() {
           })}
         />
         {errors?.password && (
-          <span className="text-sm text-red-800">
-            {errors.password.message?.toString()}
-          </span>
+          <FormError>{errors.password.message?.toString()}</FormError>
         )}
       </div>
       <div className="mt-2 flex flex-col">

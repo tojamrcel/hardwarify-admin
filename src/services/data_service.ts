@@ -139,3 +139,11 @@ export async function getOrderById(id: number): Promise<Order> {
 
   return { ...order, order_items: orderItems };
 }
+
+export async function getCategories() {
+  const { data, error } = await supabase.from("products").select("category");
+
+  if (error) throw new Error("Couldn't fetch categories.");
+
+  return [...new Set(data.map((item) => item.category))];
+}
