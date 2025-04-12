@@ -8,13 +8,16 @@ import FormError from "../../ui/FormError";
 import useCategories from "./useCategories";
 
 function AddProductForm() {
-  const { categories, error, isLoading } = useCategories();
-
+  const { categories, error } = useCategories();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<NewProduct>();
+
+  if (error) {
+    return <p className="text-red-500">An error occured</p>;
+  }
 
   function onSubmit(data: NewProduct) {
     console.log(data);
