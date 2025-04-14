@@ -12,6 +12,7 @@ function AddProductForm() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<NewProduct>();
 
@@ -82,7 +83,14 @@ function AddProductForm() {
       </FormRow>
       <FormRow>
         <Label>Discount</Label>
-        <Input type="number" register={register("discount")} />
+        <Input
+          type="number"
+          register={register("discount", {
+            validate: (val) =>
+              watch("regular_price") > Number(val) ||
+              "Discount must be less than regular price.",
+          })}
+        />
         {errors.discount && <FormError>{errors.discount?.message}</FormError>}
       </FormRow>
       <FormRow>
