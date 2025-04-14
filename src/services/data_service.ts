@@ -157,6 +157,12 @@ export async function updateOrderStatus({
   return { id, status };
 }
 
+export async function cancelOrder(id: number): Promise<void> {
+  const { error } = await supabase.from("orders").delete().eq("id", id);
+
+  if (error) throw new Error("There was an error cancelling the order");
+}
+
 export async function getCategories() {
   const { data, error } = await supabase.from("products").select("category");
 
