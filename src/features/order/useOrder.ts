@@ -10,7 +10,7 @@ function useOrder() {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["order", orderId],
+    queryKey: ["order", Number(orderId)],
     queryFn: () => getOrderById(Number(orderId)),
   });
 

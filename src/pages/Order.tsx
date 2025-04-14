@@ -23,7 +23,7 @@ function Order() {
             ))}
           </ul>
         </div>
-        <OrderSummary status={order.status} price={order.total_price} />
+        <OrderSummary price={order.total_price} />
       </div>
     </div>
   );

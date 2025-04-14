@@ -1,4 +1,4 @@
-import { LoginData, Order, Product } from "../types/types";
+import { LoginData, Order, Product, Status } from "../types/types";
 import supabase from "./supabase";
 
 // auth
@@ -138,6 +138,23 @@ export async function getOrderById(id: number): Promise<Order> {
   );
 
   return { ...order, order_items: orderItems };
+}
+
+export async function updateOrderStatus({
+  id,
+  status,
+}: {
+  id: number;
+  status: Status;
+}): Promise<{ id: number; status: Status }> {
+  const { error } = await supabase
+    .from("orders")
+    .update({ status })
+    .eq("id", id);
+
+  if (error) throw new Error("There was an error updating the order status");
+
+  return { id, status };
 }
 
 export async function getCategories() {

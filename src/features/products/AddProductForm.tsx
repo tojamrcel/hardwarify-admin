@@ -63,7 +63,7 @@ function AddProductForm() {
         >
           {categories?.map((cat) => (
             <option value={cat} key={cat}>
-              {cat}
+              {cat.toUpperCase()}
             </option>
           ))}
         </select>
