@@ -116,7 +116,7 @@ function AddProductForm() {
         {errors.image && <FormError>{errors.image?.message}</FormError>}
       </FormRow>
       <div className="mt-2 ml-auto">
-        <Button>ADD PRODUCT</Button>
+        <Button disabled={isLoading}>ADD PRODUCT</Button>
       </div>
     </form>
   );
