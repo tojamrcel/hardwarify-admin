@@ -17,7 +17,11 @@ function AddProductForm() {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<NewProduct>();
+  } = useForm<NewProduct>({
+    defaultValues: {
+      category: categories ? categories[0] : "accessories",
+    },
+  });
 
   if (error) {
     return <p className="text-red-500">An error occured</p>;
