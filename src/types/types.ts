@@ -16,7 +16,7 @@ export interface NewProduct {
   product_name: string;
   description: string;
   regular_price: number;
-  image: File;
+  image: FileList;
   category: string;
   discount: number | null;
   availability: number;

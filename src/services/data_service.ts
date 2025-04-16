@@ -1,4 +1,5 @@
-import { LoginData, Order, Product, Status } from "../types/types";
+import { LoginData, NewProduct, Order, Product, Status } from "../types/types";
+import { SUPABASE_URL } from "../utils/constants";
 import supabase from "./supabase";
 
 // auth
@@ -68,7 +69,32 @@ export async function getProductsByIds(ids: number[]): Promise<Product[]> {
   return data;
 }
 
-export async function createProduct(product: Product) {}
+export async function createProduct(product: NewProduct) {
+  const { product_name, image } = product;
+  const img = image[0];
+
+  const imageName = `${Math.floor(Math.random() * 1000)}-${product_name.split(" ").join("-")}-${img.name}`;
+  const path = `${SUPABASE_URL}/storage/v1/object/public/products_images/${imageName}`;
+  const id = Date.now() + Math.floor(Math.random() * 1000);
+
+  const { error: storageErr } = await supabase.storage
+    .from("products_images")
+    .upload(imageName, img, {
+      cacheControl: "3600",
+      upsert: false,
+    });
+
+  if (storageErr) throw new Error("Could not create product.");
+
+  const newProduct: Product = { ...product, id, image: path };
+  const { data, error } = await supabase
+    .from("products")
+    .insert(newProduct)
+    .select("*");
+
+  if (error) throw new Error("Could not create product.");
+  return data;
+}
 
 // orders
 export async function getOrders(): Promise<Order[]> {

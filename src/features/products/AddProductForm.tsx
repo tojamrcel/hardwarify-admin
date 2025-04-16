@@ -6,9 +6,12 @@ import Input from "../../ui/Input";
 import Label from "../../ui/Label";
 import FormError from "../../ui/FormError";
 import useCategories from "./useCategories";
+import useAddProduct from "./useAddProduct";
 
 function AddProductForm() {
   const { categories, error } = useCategories();
+  const { createProduct, isLoading } = useAddProduct();
+
   const {
     register,
     handleSubmit,
@@ -21,7 +24,7 @@ function AddProductForm() {
   }
 
   function onSubmit(data: NewProduct) {
-    console.log(data);
+    createProduct(data);
   }
 
   return (
@@ -113,7 +116,7 @@ function AddProductForm() {
         {errors.image && <FormError>{errors.image?.message}</FormError>}
       </FormRow>
       <div className="mt-2 ml-auto">
-        <Button>Add product</Button>
+        <Button>ADD PRODUCT</Button>
       </div>
     </form>
   );
