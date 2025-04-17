@@ -23,9 +23,7 @@ function AddProductForm() {
     },
   });
 
-  if (error) {
-    return <p className="text-red-500">An error occured</p>;
-  }
+  if (error) return <p className="text-red-500">An error occured</p>;
 
   function onSubmit(data: NewProduct) {
     createProduct(data);

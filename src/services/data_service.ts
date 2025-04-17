@@ -90,7 +90,8 @@ export async function createProduct(product: NewProduct) {
   const { data, error } = await supabase
     .from("products")
     .insert(newProduct)
-    .select("*");
+    .select("*")
+    .single();
 
   if (error) throw new Error("Could not create product.");
   return data;
