@@ -1,7 +1,8 @@
 import { Status } from "../../types/types";
 import Button from "../../ui/Button";
-import useUpdateOrderStatus from "./useUpdateOrderStatus";
+import Spinner from "../../ui/Spinner";
 import useOrder from "./useOrder";
+import useUpdateOrderStatus from "./useUpdateOrderStatus";
 
 function OrderActions() {
   const { order } = useOrder();
@@ -15,7 +16,12 @@ function OrderActions() {
     updateOrderStatus({ id, status: newStatus });
   }
 
-  if (isUpdating) return <div>Loading...</div>;
+  if (isUpdating)
+    return (
+      <div className="ml-14 flex items-center justify-center">
+        <Spinner />
+      </div>
+    );
 
   return (
     <div className="flex flex-col items-center gap-3">

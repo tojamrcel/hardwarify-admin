@@ -25,7 +25,10 @@ function ProductItem({ product }: ProductItemProps) {
         className="rounded-l-md"
       />
       <div className="relative flex h-full flex-col justify-center px-4">
-        <h2 className="font-semibold text-gray-600">{name}</h2>
+        <div className="flex items-center gap-2">
+          <h2 className="font-semibold text-gray-600">{name}</h2>
+          <span className="text-sm text-gray-500">#{id}</span>
+        </div>
         <div className="flex items-center gap-2">
           <p className={`text-gray-500 ${discount ? "line-through" : ""}`}>
             {price}$
