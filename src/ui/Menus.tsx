@@ -78,7 +78,7 @@ function Button({
   icon,
 }: {
   children: ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
   icon: ReactElement<IconType>;
 }) {
   return (

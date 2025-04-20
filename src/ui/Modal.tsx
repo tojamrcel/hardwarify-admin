@@ -8,6 +8,9 @@ import {
   useContext,
   useState,
 } from "react";
+import { createPortal } from "react-dom";
+import { HiXMark } from "react-icons/hi2";
+import { useClickOutside } from "../hooks/useClickOutside";
 
 interface ModalContextType {
   openName: string;
@@ -44,7 +47,36 @@ function Open<T extends { onClick?: () => void }>({
   return cloneElement(children, { onClick: () => open(opensWindowName) } as T);
 }
 
-function Window() {}
+function Window<T extends { onCloseModal?: () => void }>({
+  children,
+  name,
+}: {
+  children: ReactElement<T>;
+  name: string;
+}) {
+  const { openName, close } = useContext(ModalContext)!;
+  const ref = useClickOutside(close, true);
+
+  if (openName !== name) return null;
+
+  return createPortal(
+    <div className="fixed top-0 bottom-0 h-[100dvh] w-full backdrop-blur-sm">
+      <div
+        ref={ref as React.Ref<HTMLDivElement>}
+        className={`fixed top-1/2 left-1/2 ${openName === "delete" ? "h-auto w-[85%]" : "h-full w-full"} -translate-x-1/2 -translate-y-1/2 overflow-auto bg-stone-100 px-[1.6rem] py-[2rem] shadow-md sm:overflow-hidden md:h-auto md:w-auto md:rounded-xl md:px-[3.2rem] md:py-[4rem]`}
+      >
+        <button
+          onClick={close}
+          className="absolute top-4 right-4 cursor-pointer text-2xl"
+        >
+          <HiXMark />
+        </button>
+        <div>{cloneElement(children, { onCloseModal: close } as T)}</div>
+      </div>
+    </div>,
+    document.body,
+  );
+}
 
 Modal.Open = Open;
 Modal.Window = Window;
