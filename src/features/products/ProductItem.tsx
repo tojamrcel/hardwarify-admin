@@ -4,6 +4,7 @@ import Menus from "../../ui/Menus";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import useDeleteProduct from "./useDeleteProduct";
+import EditProductForm from "./EditProductForm";
 
 interface ProductItemProps {
   product: Product;
@@ -57,7 +58,7 @@ function ProductItem({ product }: ProductItemProps) {
             <ConfirmDelete onConfirm={() => deleteProduct(product.id)} />
           </Modal.Window>
           <Modal.Window name="edit">
-            <div>Edit</div>
+            <EditProductForm product={product} />
           </Modal.Window>
         </div>
       </li>
