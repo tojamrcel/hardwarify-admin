@@ -14,7 +14,7 @@ function ProductsList({ searchValue }: { searchValue: string }) {
         ?.map((product) =>
           product.product_name
             .toLowerCase()
-            .startsWith(searchValue.toLowerCase())
+            .startsWith(searchValue.toLowerCase().trimEnd())
             ? product
             : null,
         )
