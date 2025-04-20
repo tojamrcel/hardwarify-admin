@@ -97,6 +97,18 @@ export async function createProduct(product: NewProduct) {
   return data;
 }
 
+export async function deleteProduct(id: number) {
+  const { data, error } = await supabase
+    .from("products")
+    .delete()
+    .eq("id", id)
+    .select();
+
+  if (error) throw new Error("Couldn't delete order.");
+
+  return data;
+}
+
 // orders
 export async function getOrders(): Promise<Order[]> {
   const { data: orders, error: ordersError } = await supabase

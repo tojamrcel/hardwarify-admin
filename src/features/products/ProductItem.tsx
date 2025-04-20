@@ -2,6 +2,7 @@ import { HiPencil, HiTrash } from "react-icons/hi";
 import { Product } from "../../types/types";
 import Menus from "../../ui/Menus";
 import Modal from "../../ui/Modal";
+import ConfirmDelete from "../../ui/ConfirmDelete";
 
 interface ProductItemProps {
   product: Product;
@@ -50,7 +51,7 @@ function ProductItem({ product }: ProductItemProps) {
             </Modal.Open>
           </Menus.List>
           <Modal.Window name="delete">
-            <div>Delete</div>
+            <ConfirmDelete />
           </Modal.Window>
           <Modal.Window name="edit">
             <div>Edit</div>
