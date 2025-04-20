@@ -9,7 +9,7 @@ function Order() {
 
   if (isLoading)
     return (
-      <div className="flex h-full w-full items-center justify-center">
+      <div className="flex h-90 w-full items-center justify-center">
         <Spinner />
       </div>
     );
