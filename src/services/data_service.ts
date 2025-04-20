@@ -104,7 +104,8 @@ export async function deleteProduct(id: number) {
     .eq("id", id)
     .select();
 
-  if (error) throw new Error("Couldn't delete order.");
+  if (!data || !data?.length || error)
+    throw new Error("Couldn't delete order.");
 
   return data;
 }

@@ -5,7 +5,7 @@ function ConfirmDelete({
   onConfirm,
 }: {
   onCloseModal?: () => void;
-  onConfirm?: () => Promise<void>;
+  onConfirm?: () => void;
 }) {
   return (
     <div className="flex max-h-[10rem] max-w-[40rem] flex-col gap-[1.2rem]">

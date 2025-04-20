@@ -3,11 +3,14 @@ import { Product } from "../../types/types";
 import Menus from "../../ui/Menus";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
+import useDeleteProduct from "./useDeleteProduct";
 
 interface ProductItemProps {
   product: Product;
 }
 function ProductItem({ product }: ProductItemProps) {
+  const { deleteProduct } = useDeleteProduct();
+
   const {
     id,
     product_name: name,
@@ -51,7 +54,7 @@ function ProductItem({ product }: ProductItemProps) {
             </Modal.Open>
           </Menus.List>
           <Modal.Window name="delete">
-            <ConfirmDelete />
+            <ConfirmDelete onConfirm={() => deleteProduct(product.id)} />
           </Modal.Window>
           <Modal.Window name="edit">
             <div>Edit</div>
