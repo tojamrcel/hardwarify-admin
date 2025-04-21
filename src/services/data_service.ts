@@ -110,6 +110,26 @@ export async function deleteProduct(id: number) {
   return data;
 }
 
+export async function updateProduct(product: Product) {
+  console.log(product);
+  const { data, error } = await supabase
+    .from("products")
+    .update({
+      product_name: product.product_name,
+      description: product.description,
+      category: product.category,
+      regular_price: product.regular_price,
+      discount: product.discount,
+      availability: product.availability,
+    })
+    .eq("id", product.id)
+    .select();
+
+  if (error) throw new Error("There was an error while updating the product.");
+
+  console.log(data);
+}
+
 // orders
 export async function getOrders(): Promise<Order[]> {
   const { data: orders, error: ordersError } = await supabase

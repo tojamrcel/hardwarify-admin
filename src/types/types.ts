@@ -13,6 +13,7 @@ export interface Product {
 }
 
 export interface NewProduct {
+  id?: number;
   product_name: string;
   description: string;
   regular_price: number;

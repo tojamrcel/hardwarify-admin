@@ -7,12 +7,20 @@ import Label from "../../ui/Label";
 import FormError from "../../ui/FormError";
 import useCategories from "./useCategories";
 import useAddProduct from "./useAddProduct";
+import useUpdateProduct from "./useUpdateProduct";
 
-function AddProductForm({ product }: { product?: Product }) {
+function AddProductForm({
+  product,
+  onCloseModal,
+}: {
+  product?: Product;
+  onCloseModal?: () => void;
+}) {
   const isEditing = Boolean(product);
 
   const { categories, error } = useCategories();
   const { createProduct, isLoading } = useAddProduct();
+  const { updateProduct, isUpdating } = useUpdateProduct();
 
   const {
     register,
@@ -24,7 +32,7 @@ function AddProductForm({ product }: { product?: Product }) {
       product_name: product?.product_name,
       description: product?.description,
       regular_price: product?.regular_price,
-      discount: product?.discount ?? 0,
+      discount: product?.discount ?? null,
       availability: product?.availability,
       category: product?.category
         ? product?.category
@@ -37,11 +45,12 @@ function AddProductForm({ product }: { product?: Product }) {
   if (error) return <p className="text-red-500">An error occured</p>;
 
   function onSubmit(data: NewProduct) {
-    if (isEditing) {
-      console.log(data);
-    } else {
-      createProduct(data);
+    if (isEditing && product?.id) {
+      const editedProduct = { ...data, image: product.image, id: product.id };
+      updateProduct(editedProduct);
+      onCloseModal?.();
     }
+    if (!isEditing) createProduct(data);
   }
 
   return (
@@ -136,7 +145,7 @@ function AddProductForm({ product }: { product?: Product }) {
         </FormRow>
       )}
       <div className="mt-2 ml-auto">
-        <Button disabled={isLoading}>
+        <Button disabled={isLoading || isUpdating}>
           {isEditing ? "EDIT PRODUCT" : "ADD PRODUCT"}
         </Button>
       </div>

@@ -7,6 +7,11 @@ function ConfirmDelete({
   onCloseModal?: () => void;
   onConfirm?: () => void;
 }) {
+  function handleClick() {
+    onConfirm?.();
+    onCloseModal?.();
+  }
+
   return (
     <div className="flex max-h-[10rem] max-w-[40rem] flex-col gap-[1.2rem]">
       <h3 className="text-3xl font-bold">Delete product</h3>
@@ -21,7 +26,7 @@ function ConfirmDelete({
         >
           Cancel
         </button>
-        <Button onClick={onConfirm}>Delete</Button>
+        <Button onClick={handleClick}>Delete</Button>
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import ConfirmDelete from "../../ui/ConfirmDelete";
 import useDeleteProduct from "./useDeleteProduct";
 import AddProductForm from "./AddProductForm";
 import Title from "../../ui/Title";
+import UpdateProduct from "./UpdateProduct";
 
 interface ProductItemProps {
   product: Product;
@@ -40,8 +41,8 @@ function ProductItem({ product }: ProductItemProps) {
             <p className={`text-gray-500 ${discount ? "line-through" : ""}`}>
               {price}$
             </p>
-            {discount && (
-              <p className="text-red-500 italic">{price - discount}$</p>
+            {Number(discount) > 0 && (
+              <p className="text-red-500 italic">{price - Number(discount)}$</p>
             )}
           </div>
           <div className="absolute top-3 right-3">
@@ -59,10 +60,7 @@ function ProductItem({ product }: ProductItemProps) {
             <ConfirmDelete onConfirm={() => deleteProduct(product.id)} />
           </Modal.Window>
           <Modal.Window name="edit">
-            <div className="flex w-auto flex-col gap-2 md:w-[40rem]">
-              <Title>Edit product</Title>
-              <AddProductForm product={product} />
-            </div>
+            <UpdateProduct product={product} />
           </Modal.Window>
         </div>
       </li>
