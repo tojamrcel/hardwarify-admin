@@ -63,7 +63,7 @@ function Window<T extends { onCloseModal?: () => void }>({
     <div className="fixed top-0 bottom-0 z-10 h-[100dvh] w-full backdrop-blur-sm">
       <div
         ref={ref as React.Ref<HTMLDivElement>}
-        className={`fixed top-1/2 left-1/2 ${openName === "delete" ? "h-auto w-[85%]" : "h-full w-full"} -translate-x-1/2 -translate-y-1/2 overflow-auto bg-stone-100 px-[1.6rem] py-[2rem] shadow-md sm:overflow-hidden md:h-auto md:w-auto md:rounded-xl md:px-[3.2rem] md:py-[4rem]`}
+        className={`fixed top-1/2 left-1/2 ${openName === "delete" ? "h-auto w-[85%] bg-stone-100" : "h-full w-full"} -translate-x-1/2 -translate-y-1/2 overflow-auto bg-gray-200 px-[1.6rem] py-[2rem] shadow-md sm:overflow-hidden md:h-auto md:w-auto md:rounded-xl md:px-[3.2rem] md:py-[4rem]`}
       >
         <button
           onClick={close}

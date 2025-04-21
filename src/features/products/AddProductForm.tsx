@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { NewProduct } from "../../types/types";
+import { NewProduct, Product } from "../../types/types";
 import Button from "../../ui/Button";
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
@@ -8,7 +8,9 @@ import FormError from "../../ui/FormError";
 import useCategories from "./useCategories";
 import useAddProduct from "./useAddProduct";
 
-function AddProductForm() {
+function AddProductForm({ product }: { product?: Product }) {
+  const isEditing = Boolean(product);
+
   const { categories, error } = useCategories();
   const { createProduct, isLoading } = useAddProduct();
 
@@ -19,19 +21,32 @@ function AddProductForm() {
     formState: { errors },
   } = useForm<NewProduct>({
     defaultValues: {
-      category: categories ? categories[0] : "accessories",
+      product_name: product?.product_name,
+      description: product?.description,
+      regular_price: product?.regular_price,
+      discount: product?.discount ?? 0,
+      availability: product?.availability,
+      category: product?.category
+        ? product?.category
+        : categories
+          ? categories[0]
+          : "accessories",
     },
   });
 
   if (error) return <p className="text-red-500">An error occured</p>;
 
   function onSubmit(data: NewProduct) {
-    createProduct(data);
+    if (isEditing) {
+      console.log(data);
+    } else {
+      createProduct(data);
+    }
   }
 
   return (
     <form
-      className="flex w-1/2 flex-col gap-2"
+      className={`flex ${isEditing ? "w-full" : "w-1/2"} flex-col gap-2`}
       onSubmit={handleSubmit(onSubmit)}
     >
       <FormRow>
@@ -48,9 +63,10 @@ function AddProductForm() {
       </FormRow>
       <FormRow>
         <Label>Description</Label>
-        <Input
-          type="text"
-          register={register("description", {
+        <textarea
+          rows={4}
+          className="resize-none rounded-md border-2 border-transparent bg-stone-100 p-1 transition-all duration-200 focus:border-red-700 focus:outline-0"
+          {...register("description", {
             required: "Description is required",
           })}
         />
@@ -105,20 +121,24 @@ function AddProductForm() {
           <FormError>{errors.availability?.message}</FormError>
         )}
       </FormRow>
-      <FormRow>
-        <Label>Image</Label>
-        <input
-          type="file"
-          accept="image/*"
-          className="tranistion-all text-gray-600 duration-200 file:rounded-md file:bg-red-700 file:p-1 file:font-semibold file:text-stone-100 file:hover:bg-red-800"
-          {...register("image", {
-            required: "Please upload an image.",
-          })}
-        />
-        {errors.image && <FormError>{errors.image?.message}</FormError>}
-      </FormRow>
+      {!isEditing && (
+        <FormRow>
+          <Label>Image</Label>
+          <input
+            type="file"
+            accept="image/*"
+            className="tranistion-all text-gray-600 duration-200 file:rounded-md file:bg-red-700 file:p-1 file:font-semibold file:text-stone-100 file:hover:bg-red-800"
+            {...register("image", {
+              required: "Please upload an image.",
+            })}
+          />
+          {errors.image && <FormError>{errors.image?.message}</FormError>}
+        </FormRow>
+      )}
       <div className="mt-2 ml-auto">
-        <Button disabled={isLoading}>ADD PRODUCT</Button>
+        <Button disabled={isLoading}>
+          {isEditing ? "EDIT PRODUCT" : "ADD PRODUCT"}
+        </Button>
       </div>
     </form>
   );
