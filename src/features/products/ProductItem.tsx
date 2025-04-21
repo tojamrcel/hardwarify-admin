@@ -1,13 +1,11 @@
 import { HiPencil, HiTrash } from "react-icons/hi";
 import { Product } from "../../types/types";
+import ConfirmDelete from "../../ui/ConfirmDelete";
 import Menus from "../../ui/Menus";
 import Modal from "../../ui/Modal";
-import ConfirmDelete from "../../ui/ConfirmDelete";
-import useDeleteProduct from "./useDeleteProduct";
-import AddProductForm from "./AddProductForm";
-import Title from "../../ui/Title";
 import UpdateProduct from "./UpdateProduct";
-
+import useDeleteProduct from "./useDeleteProduct";
+import { HiBookmark } from "react-icons/hi";
 interface ProductItemProps {
   product: Product;
 }
@@ -55,6 +53,7 @@ function ProductItem({ product }: ProductItemProps) {
             <Modal.Open opens="delete">
               <Menus.Button icon={<HiTrash />}>Delete</Menus.Button>
             </Modal.Open>
+            <Menus.Button icon={<HiBookmark />}>Set as bestseller</Menus.Button>
           </Menus.List>
           <Modal.Window name="delete">
             <ConfirmDelete onConfirm={() => deleteProduct(product.id)} />
