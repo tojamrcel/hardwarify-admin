@@ -6,6 +6,7 @@ import Modal from "../../ui/Modal";
 import UpdateProduct from "./UpdateProduct";
 import useDeleteProduct from "./useDeleteProduct";
 import { HiBookmark } from "react-icons/hi";
+import BestsellerBadge from "./BestsellerBadge";
 interface ProductItemProps {
   product: Product;
 }
