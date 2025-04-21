@@ -111,7 +111,6 @@ export async function deleteProduct(id: number) {
 }
 
 export async function updateProduct(product: Product) {
-  console.log(product);
   const { data, error } = await supabase
     .from("products")
     .update({
@@ -127,7 +126,7 @@ export async function updateProduct(product: Product) {
 
   if (error) throw new Error("There was an error while updating the product.");
 
-  console.log(data);
+  return data;
 }
 
 // orders
