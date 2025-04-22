@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createProduct as createProductAPI } from "../../services/data_service";
+import { createProduct as createProductAPI } from "../../services/apiProducts";
 import { Product, NewProduct } from "../../types/types";
 import { useNavigate } from "react-router";
 

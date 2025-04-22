@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { deleteProduct as deleteProductAPI } from "../../services/data_service";
+import { deleteProduct as deleteProductAPI } from "../../services/apiProducts";
 
 function useDeleteProduct() {
   const {

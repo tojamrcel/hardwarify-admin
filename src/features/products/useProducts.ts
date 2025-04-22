@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getProducts } from "../../services/data_service";
+import { getProducts } from "../../services/apiProducts";
 
 function useProducts() {
   const {
