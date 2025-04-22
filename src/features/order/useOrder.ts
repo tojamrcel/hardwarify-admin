@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getOrderById } from "../../services/data_service";
+import { getOrderById } from "../../services/apiOrders";
 import { useParams } from "react-router";
 
 function useOrder() {

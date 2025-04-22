@@ -1,7 +1,6 @@
 import { Order, Status } from "../types/types";
 import supabase from "./supabase";
 
-// orders
 export async function getOrders(): Promise<Order[]> {
   const { data: orders, error: ordersError } = await supabase
     .from("orders")
@@ -92,12 +91,4 @@ export async function cancelOrder(id: number): Promise<void> {
   const { error } = await supabase.from("orders").delete().eq("id", id);
 
   if (error) throw new Error("There was an error cancelling the order");
-}
-
-export async function getCategories() {
-  const { data, error } = await supabase.from("products").select("category");
-
-  if (error) throw new Error("Couldn't fetch categories.");
-
-  return [...new Set(data.map((item) => item.category))];
 }

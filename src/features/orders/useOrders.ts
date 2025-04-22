@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getOrders } from "../../services/data_service";
+import { getOrders } from "../../services/apiOrders";
 
 function useOrders() {
   const {
