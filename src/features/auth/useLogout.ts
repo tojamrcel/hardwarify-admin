@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { logout as APIlogout } from "../../services/data_service";
+import { logout as APIlogout } from "../../services/apiAuth";
 import { useNavigate } from "react-router";
 
 function useLogout() {
