@@ -1,18 +1,32 @@
 import NumStatsBox from "../features/dashboard/NumStatsBox";
+import useStats from "../features/dashboard/useStats";
+import Spinner from "../ui/Spinner";
 import Title from "../ui/Title";
 
 function Dashboard() {
+  const { stats, isLoading, error } = useStats();
+
+  if (isLoading)
+    return (
+      <div className="flex h-screen max-h-full w-screen max-w-full items-center justify-center">
+        <Spinner />
+      </div>
+    );
+  if (error || !stats) throw new Error("Couldn't fetch stats");
+
+  const { numOrders, toBeShipped, ordersToday } = stats;
+
   return (
     <div className="flex flex-col gap-4 xl:gap-6">
       <Title>Dashboard</Title>
       <div className="grid gap-4 xl:grid-cols-3 xl:gap-16">
-        <NumStatsBox number={3} color="green">
-          NEW ORDERS TODAY
+        <NumStatsBox number={ordersToday} color="green">
+          ORDERS IN LAST 24H
         </NumStatsBox>
-        <NumStatsBox number={7} color="yellow">
+        <NumStatsBox number={toBeShipped} color="yellow">
           ORDERS WAITING TO BE SHIPPED
         </NumStatsBox>
-        <NumStatsBox number={48} color="red">
+        <NumStatsBox number={numOrders} color="red">
           ALL ORDERS
         </NumStatsBox>
       </div>

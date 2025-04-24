@@ -92,3 +92,39 @@ export async function cancelOrder(id: number): Promise<void> {
 
   if (error) throw new Error("There was an error cancelling the order");
 }
+
+export async function getOrdersStats(): Promise<{
+  numOrders: number;
+  toBeShipped: number;
+  ordersToday: number;
+}> {
+  const { count: numOrders, error } = await supabase
+    .from("orders")
+    .select("*", { count: "exact", head: true });
+
+  if (error) throw new Error("Couldn't fetch stats.");
+
+  const { count: pendingOrders, error: pendingOrdersError } = await supabase
+    .from("orders")
+    .select("*", { count: "exact", head: true })
+    .eq("status", "pending");
+
+  if (pendingOrdersError) throw new Error("Couldn't fetch stats.");
+
+  const twentyFourHoursAgo = new Date(
+    Date.now() - 24 * 60 * 60 * 1000,
+  ).toISOString();
+
+  const { count: ordersToday, error: todayOrdersError } = await supabase
+    .from("orders")
+    .select("*", { count: "exact", head: true })
+    .gte("created_at", twentyFourHoursAgo);
+
+  if (todayOrdersError) throw new Error("Couldn't fetch stats.");
+
+  return {
+    numOrders: Number(numOrders),
+    toBeShipped: Number(pendingOrders),
+    ordersToday: Number(ordersToday),
+  };
+}
