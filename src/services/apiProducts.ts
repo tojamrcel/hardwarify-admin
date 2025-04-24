@@ -7,8 +7,6 @@ export async function getProducts(): Promise<Product[]> {
     .from("products")
     .select("*, bestsellers(id)");
 
-  console.log(data);
-
   if (error) throw new Error("Couldn't fetch products.");
 
   const products = data.map(({ bestsellers, ...product }) => ({

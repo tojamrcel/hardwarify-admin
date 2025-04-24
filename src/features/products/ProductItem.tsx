@@ -57,7 +57,9 @@ function ProductItem({ product }: ProductItemProps) {
             <Modal.Open opens="delete">
               <Menus.Button icon={<HiTrash />}>Delete</Menus.Button>
             </Modal.Open>
-            <Menus.Button icon={<HiBookmark />}>Set as bestseller</Menus.Button>
+            <Menus.Button icon={<HiBookmark />}>
+              {isBestseller ? "Remove from bestsellers" : "Set as a bestseller"}
+            </Menus.Button>
           </Menus.List>
           <Modal.Window name="delete">
             <ConfirmDelete onConfirm={() => deleteProduct(product.id)} />
