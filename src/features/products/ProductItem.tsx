@@ -1,6 +1,5 @@
 import { HiPencil, HiTrash } from "react-icons/hi";
 import { Product } from "../../types/types";
-import ConfirmDelete from "../../ui/ConfirmDelete";
 import Menus from "../../ui/Menus";
 import Modal from "../../ui/Modal";
 import UpdateProduct from "./UpdateProduct";
@@ -8,6 +7,7 @@ import useDeleteProduct from "./useDeleteProduct";
 import { HiBookmark } from "react-icons/hi";
 import BestsellerBadge from "./BestsellerBadge";
 import useUpdateBestsellers from "./useUpdateBestsellers";
+import ConfirmationBox from "../../ui/ConfirmationBox";
 
 interface ProductItemProps {
   product: Product;
@@ -59,15 +59,25 @@ function ProductItem({ product }: ProductItemProps) {
             <Modal.Open opens="delete">
               <Menus.Button icon={<HiTrash />}>Delete</Menus.Button>
             </Modal.Open>
-            <Menus.Button
-              icon={<HiBookmark />}
-              onClick={() => updateBestsellerStatus(id)}
-            >
-              {isBestseller ? "Remove from bestsellers" : "Set as a bestseller"}
-            </Menus.Button>
+            <Modal.Open opens="changeBestseller">
+              <Menus.Button icon={<HiBookmark />}>
+                {isBestseller
+                  ? "Remove from bestsellers"
+                  : "Set as a bestseller"}
+              </Menus.Button>
+            </Modal.Open>
           </Menus.List>
           <Modal.Window name="delete">
-            <ConfirmDelete onConfirm={() => deleteProduct(product.id)} />
+            <ConfirmationBox
+              type="delete"
+              onConfirm={() => deleteProduct(product.id)}
+            />
+          </Modal.Window>
+          <Modal.Window name="changeBestseller">
+            <ConfirmationBox
+              type="bestseller"
+              onConfirm={() => updateBestsellerStatus(id)}
+            />
           </Modal.Window>
           <Modal.Window name="edit">
             <UpdateProduct product={product} />
