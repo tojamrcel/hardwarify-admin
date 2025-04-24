@@ -20,6 +20,7 @@ function ProductItem({ product }: ProductItemProps) {
     regular_price: price,
     image,
     discount,
+    isBestseller,
   } = product;
 
   return (
@@ -34,6 +35,7 @@ function ProductItem({ product }: ProductItemProps) {
         />
         <div className="relative flex h-full flex-col justify-center px-4">
           <div className="flex items-center gap-2">
+            {isBestseller && <BestsellerBadge />}
             <h2 className="font-semibold text-gray-600">{name}</h2>
             <span className="text-sm text-gray-500">#{id}</span>
           </div>

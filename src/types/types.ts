@@ -10,6 +10,7 @@ export interface Product {
   discount: number | null;
   availability: number;
   quantity?: number;
+  isBestseller?: boolean;
 }
 
 export interface NewProduct {

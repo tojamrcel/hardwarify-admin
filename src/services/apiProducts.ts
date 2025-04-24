@@ -3,11 +3,20 @@ import { SUPABASE_URL } from "../utils/constants";
 import supabase from "./supabase";
 
 export async function getProducts(): Promise<Product[]> {
-  const { data, error } = await supabase.from("products").select("*");
+  const { data, error } = await supabase
+    .from("products")
+    .select("*, bestsellers(id)");
+
+  console.log(data);
 
   if (error) throw new Error("Couldn't fetch products.");
 
-  return data;
+  const products = data.map(({ bestsellers, ...product }) => ({
+    ...product,
+    isBestseller: bestsellers.length > 0,
+  }));
+
+  return products;
 }
 
 export async function getProductById(id: string): Promise<Product> {
