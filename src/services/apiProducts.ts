@@ -40,6 +40,38 @@ export async function getProductsByIds(ids: number[]): Promise<Product[]> {
   return data;
 }
 
+export async function updateBestsellerStatus(id: number) {
+  const { data: bestsellers, error: bestsellersError } = await supabase
+    .from("bestsellers")
+    .select("*");
+
+  if (bestsellersError) throw new Error("Couldn't fetch bestsellers.");
+
+  const isBestseller = Boolean(bestsellers.find((bs) => bs.product_id === id));
+
+  if (!isBestseller) {
+    const { data, error } = await supabase
+      .from("bestsellers")
+      .insert({ product_id: id })
+      .select();
+
+    if (error) throw new Error("Couldn't set this product as bestseller.");
+
+    return data;
+  } else {
+    const { data, error } = await supabase
+      .from("bestsellers")
+      .delete()
+      .eq("product_id", id)
+      .select();
+
+    if (error)
+      throw new Error("Couldn't remove this product from bestsellers list.");
+
+    return data;
+  }
+}
+
 export async function createProduct(product: NewProduct) {
   const { product_name, image } = product;
   const img = image[0];

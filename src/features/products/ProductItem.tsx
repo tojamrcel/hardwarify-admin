@@ -7,12 +7,14 @@ import UpdateProduct from "./UpdateProduct";
 import useDeleteProduct from "./useDeleteProduct";
 import { HiBookmark } from "react-icons/hi";
 import BestsellerBadge from "./BestsellerBadge";
+import useUpdateBestsellers from "./useUpdateBestsellers";
 
 interface ProductItemProps {
   product: Product;
 }
 function ProductItem({ product }: ProductItemProps) {
   const { deleteProduct } = useDeleteProduct();
+  const { updateBestsellerStatus } = useUpdateBestsellers();
 
   const {
     id,
@@ -57,7 +59,10 @@ function ProductItem({ product }: ProductItemProps) {
             <Modal.Open opens="delete">
               <Menus.Button icon={<HiTrash />}>Delete</Menus.Button>
             </Modal.Open>
-            <Menus.Button icon={<HiBookmark />}>
+            <Menus.Button
+              icon={<HiBookmark />}
+              onClick={() => updateBestsellerStatus(id)}
+            >
               {isBestseller ? "Remove from bestsellers" : "Set as a bestseller"}
             </Menus.Button>
           </Menus.List>
