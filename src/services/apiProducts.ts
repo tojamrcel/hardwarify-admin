@@ -2,11 +2,14 @@ import { NewProduct, Product } from "../types/types";
 import { SUPABASE_URL } from "../utils/constants";
 import supabase from "./supabase";
 
-export async function getProducts(): Promise<Product[]> {
-  const { data, error } = await supabase
-    .from("products")
-    .select("*, bestsellers(id)");
+export async function getProducts(
+  searchValue: string | undefined,
+): Promise<Product[]> {
+  let query = supabase.from("products").select("*, bestsellers(id)");
 
+  if (searchValue) query = query.ilike("product_name", `%${searchValue}%`);
+
+  const { data, error } = await query;
   if (error) throw new Error("Couldn't fetch products.");
 
   const products = data.map(({ bestsellers, ...product }) => ({

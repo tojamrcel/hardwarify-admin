@@ -2,29 +2,10 @@ import ProductItem from "./ProductItem";
 import useProducts from "./useProducts";
 import Menus from "../../ui/Menus";
 import Spinner from "../../ui/Spinner";
-import { useEffect, useState } from "react";
+import Pagination from "../../ui/Pagination";
 
 function ProductsList({ searchValue }: { searchValue: string }) {
-  const { products, isLoading, error } = useProducts();
-  const [searchedProducts, setSearchedProducts] = useState(products);
-
-  useEffect(() => {
-    if (searchValue) {
-      const productsFiltered = products
-        ?.map((product) =>
-          product.product_name
-            .toLowerCase()
-            .startsWith(searchValue.toLowerCase().trimEnd())
-            ? product
-            : null,
-        )
-        .filter((prod) => prod !== null);
-
-      setSearchedProducts(productsFiltered);
-    } else if (!searchValue) {
-      setSearchedProducts(products);
-    }
-  }, [products, searchValue, setSearchedProducts]);
+  const { products, isLoading, error } = useProducts(searchValue);
 
   if (isLoading)
     return (
@@ -33,7 +14,7 @@ function ProductsList({ searchValue }: { searchValue: string }) {
       </div>
     );
 
-  if (!searchedProducts?.length)
+  if (!products?.length)
     return (
       <div className="my-5">
         <p className="text-center text-lg text-gray-500">
@@ -44,14 +25,15 @@ function ProductsList({ searchValue }: { searchValue: string }) {
 
   return (
     <>
-      <ul className="mt-2 flex max-h-[60dvh] max-w-full flex-col gap-4 overflow-auto p-8">
+      <ul className="mt-2 flex max-w-full flex-col gap-4">
         <Menus>
-          {searchedProducts?.map((product) => (
+          {products?.map((product) => (
             <ProductItem product={product} key={product.id} />
           ))}
         </Menus>
         {error && <p className="text-center text-red-700">{error.message}</p>}
       </ul>
+      <Pagination count={1} />
     </>
   );
 }

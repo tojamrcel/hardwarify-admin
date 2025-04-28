@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { getProducts } from "../../services/apiProducts";
 
-function useProducts() {
+function useProducts(searchTerm: string | undefined) {
   const {
     data: products,
     isPending: isLoading,
     error,
   } = useQuery({
-    queryKey: ["products"],
-    queryFn: getProducts,
+    queryKey: ["products", searchTerm],
+    queryFn: () => getProducts(searchTerm),
   });
 
   return { products, isLoading, error };
