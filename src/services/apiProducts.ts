@@ -1,15 +1,28 @@
 import { NewProduct, Product } from "../types/types";
-import { SUPABASE_URL } from "../utils/constants";
+import { PER_PAGE, SUPABASE_URL } from "../utils/constants";
 import supabase from "./supabase";
 
-export async function getProducts(
-  searchValue: string | undefined,
-): Promise<Product[]> {
-  let query = supabase.from("products").select("*, bestsellers(id)");
+export async function getProducts({
+  searchTerm,
+  page,
+}: {
+  searchTerm: string | undefined;
+  page: number;
+}): Promise<{ products: Product[]; count: number }> {
+  let query = supabase
+    .from("products")
+    .select("*, bestsellers(id)", { count: "exact" });
 
-  if (searchValue) query = query.ilike("product_name", `%${searchValue}%`);
+  if (searchTerm) query = query.ilike("product_name", `%${searchTerm}%`);
 
-  const { data, error } = await query;
+  if (page) {
+    const from = (page - 1) * PER_PAGE;
+    const to = from + PER_PAGE - 1;
+
+    query = query.range(from, to);
+  }
+
+  const { data, error, count } = await query;
   if (error) throw new Error("Couldn't fetch products.");
 
   const products = data.map(({ bestsellers, ...product }) => ({
@@ -17,7 +30,7 @@ export async function getProducts(
     isBestseller: bestsellers.length > 0,
   }));
 
-  return products;
+  return { products, count: Number(count) };
 }
 
 export async function getProductById(id: string): Promise<Product> {

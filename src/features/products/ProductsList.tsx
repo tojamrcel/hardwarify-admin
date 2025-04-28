@@ -5,7 +5,7 @@ import Spinner from "../../ui/Spinner";
 import Pagination from "../../ui/Pagination";
 
 function ProductsList({ searchValue }: { searchValue: string }) {
-  const { products, isLoading, error } = useProducts(searchValue);
+  const { data, isLoading, error } = useProducts(searchValue);
 
   if (isLoading)
     return (
@@ -14,7 +14,7 @@ function ProductsList({ searchValue }: { searchValue: string }) {
       </div>
     );
 
-  if (!products?.length)
+  if (!data?.products?.length)
     return (
       <div className="my-5">
         <p className="text-center text-lg text-gray-500">
@@ -27,13 +27,13 @@ function ProductsList({ searchValue }: { searchValue: string }) {
     <>
       <ul className="mt-2 flex max-w-full flex-col gap-4">
         <Menus>
-          {products?.map((product) => (
+          {data?.products?.map((product) => (
             <ProductItem product={product} key={product.id} />
           ))}
         </Menus>
         {error && <p className="text-center text-red-700">{error.message}</p>}
       </ul>
-      <Pagination count={1} />
+      <Pagination count={data?.count} />
     </>
   );
 }
