@@ -13,7 +13,7 @@ function useOrders() {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["orders"],
+    queryKey: ["orders", curPage],
     queryFn: () => getOrders(curPage),
   });
 

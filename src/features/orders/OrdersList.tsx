@@ -1,3 +1,4 @@
+import Pagination from "../../ui/Pagination";
 import Spinner from "../../ui/Spinner";
 import OrderItem from "./OrderItem";
 import useOrders from "./useOrders";
@@ -13,9 +14,12 @@ function OrdersList() {
     );
 
   return (
-    <ul className="mt-2 flex max-w-full flex-col gap-4">
-      {orders?.map((order) => <OrderItem order={order} key={order.id} />)}
-    </ul>
+    <>
+      <ul className="mt-2 flex max-w-full flex-col gap-4">
+        {orders?.map((order) => <OrderItem order={order} key={order.id} />)}
+      </ul>
+      <Pagination />
+    </>
   );
 }
 
