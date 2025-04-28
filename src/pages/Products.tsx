@@ -3,9 +3,12 @@ import { HiSearch } from "react-icons/hi";
 import ProductsList from "../features/products/ProductsList";
 import Button from "../ui/Button";
 import Title from "../ui/Title";
+import useDebounce from "../hooks/useDebounce";
 
 function Products() {
   const [searchValue, setSearchValue] = useState<string>("");
+
+  const debouncedSearchTerm = useDebounce(searchValue, 500);
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSearchValue(e.target.value);
@@ -25,7 +28,7 @@ function Products() {
           <HiSearch />
         </div>
       </div>
-      <ProductsList searchValue={searchValue} />
+      <ProductsList searchValue={debouncedSearchTerm} />
       <div className="ml-auto">
         <Button link="/products/add" type="secondary">
           Add new item
