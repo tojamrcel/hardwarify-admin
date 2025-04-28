@@ -8,16 +8,12 @@ function useOrders() {
     ? Number(searchParams.get("page"))
     : 1;
 
-  const {
-    data: orders,
-    isLoading,
-    error,
-  } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ["orders", curPage],
     queryFn: () => getOrders(curPage),
   });
 
-  return { orders, isLoading, error };
+  return { data, isLoading, error };
 }
 
 export default useOrders;

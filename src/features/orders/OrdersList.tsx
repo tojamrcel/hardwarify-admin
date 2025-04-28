@@ -4,7 +4,7 @@ import OrderItem from "./OrderItem";
 import useOrders from "./useOrders";
 
 function OrdersList() {
-  const { orders, isLoading } = useOrders();
+  const { data, isLoading } = useOrders();
 
   if (isLoading)
     return (
@@ -16,9 +16,11 @@ function OrdersList() {
   return (
     <>
       <ul className="mt-2 flex max-w-full flex-col gap-4">
-        {orders?.map((order) => <OrderItem order={order} key={order.id} />)}
+        {data?.orders?.map((order) => (
+          <OrderItem order={order} key={order.id} />
+        ))}
       </ul>
-      <Pagination />
+      <Pagination count={Number(data?.count)} />
     </>
   );
 }
