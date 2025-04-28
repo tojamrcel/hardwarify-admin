@@ -12,7 +12,7 @@ function Products() {
   }
 
   return (
-    <div className="flex max-w-3/4 flex-col gap-2">
+    <div className="flex max-w-full flex-col gap-2">
       <Title>Products</Title>
       <div className="relative flex h-10 w-full items-center justify-center">
         <input

@@ -43,14 +43,16 @@ function ProductsList({ searchValue }: { searchValue: string }) {
     );
 
   return (
-    <ul className="mt-2 flex max-w-full flex-col gap-4">
-      <Menus>
-        {searchedProducts?.map((product) => (
-          <ProductItem product={product} key={product.id} />
-        ))}
-      </Menus>
-      {error && <p className="text-center text-red-700">{error.message}</p>}
-    </ul>
+    <>
+      <ul className="mt-2 flex max-h-[60dvh] max-w-full flex-col gap-4 overflow-auto p-8">
+        <Menus>
+          {searchedProducts?.map((product) => (
+            <ProductItem product={product} key={product.id} />
+          ))}
+        </Menus>
+        {error && <p className="text-center text-red-700">{error.message}</p>}
+      </ul>
+    </>
   );
 }
 

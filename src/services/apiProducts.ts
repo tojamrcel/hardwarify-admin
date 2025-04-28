@@ -1,18 +1,11 @@
 import { NewProduct, Product } from "../types/types";
-import { PER_PAGE, SUPABASE_URL } from "../utils/constants";
+import { SUPABASE_URL } from "../utils/constants";
 import supabase from "./supabase";
 
-export async function getProducts(page: number): Promise<Product[]> {
-  let query = supabase.from("products").select("*, bestsellers(id)");
-
-  if (page) {
-    const from = (page - 1) * PER_PAGE;
-    const to = from + PER_PAGE - 1;
-
-    query = query.range(from, to);
-  }
-
-  const { data, error } = await query;
+export async function getProducts(): Promise<Product[]> {
+  const { data, error } = await supabase
+    .from("products")
+    .select("*, bestsellers(id)");
 
   if (error) throw new Error("Couldn't fetch products.");
 

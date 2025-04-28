@@ -1,10 +1,20 @@
 import { Order, Status } from "../types/types";
 import supabase from "./supabase";
+import { PER_PAGE } from "../utils/constants";
 
-export async function getOrders(): Promise<Order[]> {
-  const { data: orders, error: ordersError } = await supabase
+export async function getOrders(page: number): Promise<Order[]> {
+  let query = supabase
     .from("orders")
     .select("*, order_items(product_id, quantity)");
+
+  if (page) {
+    const from = (page - 1) * PER_PAGE;
+    const to = from + PER_PAGE - 1;
+
+    query = query.range(from, to);
+  }
+
+  const { data: orders, error: ordersError } = await query;
 
   if (ordersError) throw new Error("Couldn't fetch orders.");
 
