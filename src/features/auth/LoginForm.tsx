@@ -56,7 +56,7 @@ function LoginForm() {
       </div>
       {error && (
         <span className="text-center text-sm text-red-800">
-          Email or password is incorrect.
+          {error.message}
         </span>
       )}
     </form>

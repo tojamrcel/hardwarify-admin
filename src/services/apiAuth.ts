@@ -8,6 +8,18 @@ export async function login({ email, password }: LoginData) {
   });
 
   if (error) throw new Error("Invalid credentials");
+
+  const { data: roleData } = await supabase.from("user_roles").select("*");
+
+  if (!roleData?.length) {
+    const { error: logoutErr } = await supabase.auth.signOut();
+    if (logoutErr) throw new Error("An error occured.");
+
+    throw new Error(
+      "You're trying to login with user account. Try again with admin account.",
+    );
+  }
+
   return data.user;
 }
 
