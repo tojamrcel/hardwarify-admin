@@ -29,7 +29,7 @@ function Dashboard() {
     { day: "Mon", orders: 10 },
     { day: "Tue", orders: 12 },
     { day: "Wed", orders: 7 },
-    { day: "Thur", orders: 6 },
+    { day: "Thu", orders: 6 },
     { day: "Fri", orders: 5 },
     { day: "Sat", orders: 3 },
     { day: "Sun", orders: 8 },
@@ -39,7 +39,7 @@ function Dashboard() {
     { day: "Mon", revenue: 8200 },
     { day: "Tue", revenue: 10250 },
     { day: "Wed", revenue: 9350 },
-    { day: "Thur", revenue: 11780 },
+    { day: "Thu", revenue: 11780 },
     { day: "Fri", revenue: 9850 },
     { day: "Sat", revenue: 7100 },
     { day: "Sun", revenue: 4300 },
@@ -80,6 +80,7 @@ function Dashboard() {
               <YAxis />
               <Tooltip />
               <Area
+                name="Orders"
                 type="monotone"
                 dataKey="orders"
                 stroke="#b91c1c"
@@ -109,10 +110,12 @@ function Dashboard() {
               <YAxis />
               <Tooltip />
               <Area
+                name="Revenue"
                 type="monotone"
                 dataKey="revenue"
                 stroke="#b91c1c"
                 fillOpacity={1}
+                unit="$"
                 fill="url(#colorOrders)"
               />
             </AreaChart>

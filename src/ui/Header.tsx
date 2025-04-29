@@ -1,6 +1,7 @@
 import { IoMdMenu } from "react-icons/io";
 import { MdDarkMode } from "react-icons/md";
 import RoundedBtn from "./RoundedBtn";
+import ToggleDarkMode from "./ToggleDarkMode";
 
 function Header({ handleOpen }: { handleOpen: () => void }) {
   return (
@@ -14,10 +15,7 @@ function Header({ handleOpen }: { handleOpen: () => void }) {
         hardwarify
       </h1>
       <div className="ml-auto flex w-10 justify-center">
-        <RoundedBtn size={10} textSize="2xl">
-          <MdDarkMode />
-          {/* <MdLightMode /> */}
-        </RoundedBtn>
+        <ToggleDarkMode />
       </div>
     </div>
   );
