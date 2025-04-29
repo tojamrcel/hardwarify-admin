@@ -1,4 +1,3 @@
-import { Chart } from "react-charts";
 import NumStatsBox from "../features/dashboard/NumStatsBox";
 import useStats from "../features/dashboard/useStats";
 import Spinner from "../ui/Spinner";
