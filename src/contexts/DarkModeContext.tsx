@@ -5,6 +5,7 @@ import {
   useState,
   Dispatch,
   ReactNode,
+  useEffect,
 } from "react";
 
 interface DarkModeContextType {
@@ -16,6 +17,14 @@ const DarkModeContext = createContext<DarkModeContextType | null>(null);
 
 function DarkModeProvider({ children }: { children: ReactNode }) {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDarkMode]);
 
   return (
     <DarkModeContext.Provider value={{ isDarkMode, setIsDarkMode }}>

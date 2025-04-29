@@ -1,5 +1,4 @@
 import { IoMdMenu } from "react-icons/io";
-import { MdDarkMode } from "react-icons/md";
 import RoundedBtn from "./RoundedBtn";
 import ToggleDarkMode from "./ToggleDarkMode";
 
