@@ -140,3 +140,61 @@ export async function getOrdersStats(): Promise<{
     ordersToday: Number(ordersToday),
   };
 }
+
+export async function getLastOrdersStats() {
+  const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  function getLast7Days() {
+    const today = new Date().getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
+    const days = [];
+
+    for (let i = 0; i < 7; i++) {
+      const index = (today - i + 7) % 7; // zapętlenie poniżej 0
+      days.push(dayNames[index]);
+    }
+
+    return days.reverse();
+  }
+  const days = getLast7Days();
+
+  const sevenDays = new Date();
+  sevenDays.setHours(0, 0, 0, 0);
+  sevenDays.setDate(sevenDays.getDate() - 7);
+
+  const { data, error } = await supabase
+    .from("orders")
+    .select("created_at, total_price")
+    .gte("created_at", sevenDays.toISOString());
+
+  if (error) throw new Error("Couldn't get stats.");
+
+  const revenueData = data.map((order) => {
+    const date = new Date(order.created_at).getDay();
+
+    const revenue = data.reduce((acc, cur) => {
+      const date2 = new Date(cur.created_at).getDay();
+      if (date2 === date) return (acc += cur.total_price);
+      else return acc;
+    }, 0);
+
+    return { day: dayNames[date], revenue };
+  });
+
+  const finalRevenueData = days.map((day) => {
+    const revenue = revenueData.find((data) => data.day === day)?.revenue ?? 0;
+    return { day, revenue };
+  });
+
+  const ordersData = days.map((day) => {
+    const orders = data
+      .map((order) => {
+        const date = new Date(order.created_at).getDay();
+        if (dayNames[date] === day) return order;
+      })
+      .filter((order) => order !== undefined).length;
+
+    return { day, orders };
+  });
+
+  return { revenueData: finalRevenueData, ordersData };
+}
