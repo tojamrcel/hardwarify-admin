@@ -11,7 +11,7 @@ function Products() {
   const debouncedSearchTerm = useDebounce(searchValue, 500);
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setSearchValue(e.target.value);
+    setSearchValue(e.target.value.trimEnd());
   }
 
   return (
