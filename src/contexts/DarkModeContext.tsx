@@ -16,13 +16,19 @@ interface DarkModeContextType {
 const DarkModeContext = createContext<DarkModeContextType | null>(null);
 
 function DarkModeProvider({ children }: { children: ReactNode }) {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(
+    localStorage.getItem("darkMode")
+      ? JSON.parse(localStorage.getItem("darkMode")!)
+      : window.matchMedia("(prefers-color-scheme: dark)").matches,
+  );
 
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
+      localStorage.setItem("darkMode", JSON.stringify(true));
     } else {
       document.documentElement.classList.remove("dark");
+      localStorage.setItem("darkMode", JSON.stringify(false));
     }
   }, [isDarkMode]);
 
