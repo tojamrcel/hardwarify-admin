@@ -7,14 +7,14 @@ function OrderItem({ order }: { order: Order }) {
 
   return (
     <li className="flex h-32 flex-col overflow-hidden rounded-md bg-stone-100 dark:bg-gray-800">
-      <div className="relative flex h-full flex-col gap-2 p-4">
-        <div className="flex items-center gap-4">
-          <h2 className="text-xl font-semibold text-gray-600 dark:text-gray-300">
+      <div className="relative flex h-full flex-col gap-2 p-2 sm:p-4">
+        <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:gap-4">
+          <h2 className="font-semibold text-gray-600 sm:text-xl dark:text-gray-300">
             Order #{id}
           </h2>
           <OrderStatusBadge status={status} />
         </div>
-        <div className="flex max-w-3/4 gap-2 overflow-clip">
+        <div className="flex max-w-1/2 gap-2 overflow-clip sm:max-w-3/4">
           {orderItems.map((item) => (
             <img
               src={item.image}
