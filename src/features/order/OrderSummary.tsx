@@ -10,19 +10,25 @@ function OrderSummary({ price }: OrderSummaryProps) {
 
   return (
     <div className="flex flex-col gap-2">
-      <h2 className="text-xl font-semibold text-gray-600">Summary</h2>
+      <h2 className="text-xl font-semibold text-gray-600 dark:text-gray-300">
+        Summary
+      </h2>
       <div className="flex flex-col gap-1">
         <div className="flex gap-2">
-          <span className="font-semibold text-gray-600">STATUS:</span>
+          <span className="font-semibold text-gray-600 dark:text-gray-300">
+            STATUS:
+          </span>
           <span
-            className={`font-bold tracking-tight ${order?.status === "pending" ? "text-green-500" : ""} ${order?.status === "sent" ? "text-yellow-600" : ""} ${order?.status === "delivered" ? "text-red-700" : ""} uppercase`}
+            className={`font-bold tracking-tight ${order?.status === "pending" ? "text-green-500 dark:text-green-700" : ""} ${order?.status === "sent" ? "text-yellow-600 dark:text-yellow-700" : ""} ${order?.status === "delivered" ? "text-red-700 dark:text-red-800" : ""} uppercase`}
           >
             {order?.status}
           </span>
         </div>
         <div className="flex gap-2">
-          <span className="font-semibold text-gray-600">FINAL PRICE:</span>
-          <span className="font-bold tracking-tight text-gray-600">
+          <span className="font-semibold text-gray-600 dark:text-gray-300">
+            FINAL PRICE:
+          </span>
+          <span className="font-bold tracking-tight text-gray-600 dark:text-gray-300">
             ${price}
           </span>
         </div>

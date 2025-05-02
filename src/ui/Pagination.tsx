@@ -24,11 +24,11 @@ function Pagination({ count }: { count: number }) {
   }
 
   return (
-    <div className="flex w-full items-center justify-center gap-2 text-gray-500">
+    <div className="flex w-full items-center justify-center gap-2 text-gray-500 dark:text-gray-400">
       <button
         onClick={prevPage}
         disabled={curPage === 1}
-        className="cursor-pointer transition-all duration-150 hover:text-gray-400 disabled:cursor-default disabled:text-gray-400"
+        className="cursor-pointer transition-all duration-150 hover:text-gray-400 disabled:cursor-default disabled:text-gray-400 hover:dark:text-gray-500"
       >
         <FaAngleLeft />
       </button>
@@ -36,7 +36,7 @@ function Pagination({ count }: { count: number }) {
       <button
         disabled={curPage === pageCount}
         onClick={nextPage}
-        className="cursor-pointer transition-all duration-150 hover:text-gray-400 disabled:cursor-default disabled:text-gray-400"
+        className="cursor-pointer transition-all duration-150 hover:text-gray-400 disabled:cursor-default disabled:text-gray-400 hover:dark:text-gray-500"
       >
         <FaAngleRight />
       </button>

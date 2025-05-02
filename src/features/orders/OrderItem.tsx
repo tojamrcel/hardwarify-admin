@@ -6,10 +6,12 @@ function OrderItem({ order }: { order: Order }) {
   const { id, total_price: price, status, order_items: orderItems } = order;
 
   return (
-    <li className="flex h-32 flex-col overflow-hidden rounded-md bg-stone-100">
+    <li className="flex h-32 flex-col overflow-hidden rounded-md bg-stone-100 dark:bg-gray-800">
       <div className="relative flex h-full flex-col gap-2 p-4">
         <div className="flex items-center gap-4">
-          <h2 className="text-xl font-semibold text-gray-600">Order #{id}</h2>
+          <h2 className="text-xl font-semibold text-gray-600 dark:text-gray-300">
+            Order #{id}
+          </h2>
           <OrderStatusBadge status={status} />
         </div>
         <div className="flex max-w-3/4 gap-2 overflow-clip">

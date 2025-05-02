@@ -14,7 +14,7 @@ function Login() {
   return (
     <div>
       <div className="flex h-[80vh] max-h-3/4 flex-col items-center justify-center gap-2">
-        <h1 className="text-center text-5xl font-bold text-gray-700 uppercase">
+        <h1 className="text-center text-5xl font-bold text-gray-700 uppercase dark:text-gray-400">
           Login
         </h1>
         <LoginForm />

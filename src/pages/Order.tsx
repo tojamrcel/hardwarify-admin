@@ -22,7 +22,9 @@ function Order() {
       <Title>Order #{order?.id}</Title>
       <div className="grid grid-cols-2 gap-32">
         <div className="flex flex-col gap-2">
-          <h2 className="text-xl font-semibold text-gray-600">Items</h2>
+          <h2 className="text-xl font-semibold text-gray-600 dark:text-gray-300">
+            Items
+          </h2>
           <ul className="flex max-h-96 flex-col gap-2 overflow-auto px-2">
             {order.order_items.map((item) => (
               <OrderProductItem key={item.id} item={item} />
