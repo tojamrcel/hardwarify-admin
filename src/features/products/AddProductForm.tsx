@@ -119,6 +119,10 @@ function AddProductForm({
             validate: (val) =>
               watch("regular_price") > Number(val) ||
               "Discount must be less than regular price.",
+            min: {
+              value: 0,
+              message: "Discount must be a positive number.",
+            },
           })}
         />
         {errors.discount && <FormError>{errors.discount?.message}</FormError>}
