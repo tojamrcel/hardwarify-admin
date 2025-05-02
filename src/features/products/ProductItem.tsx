@@ -36,9 +36,9 @@ function ProductItem({ product }: ProductItemProps) {
           className="rounded-l-md"
         />
         <div className="relative flex h-full flex-col justify-center px-4">
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col items-start md:flex-row md:items-center md:gap-2">
             {isBestseller && <BestsellerBadge />}
-            <h2 className="font-semibold text-gray-600 dark:text-gray-300">
+            <h2 className="text-sm font-semibold text-gray-600 sm:text-base dark:text-gray-300">
               {name}
             </h2>
             <span className="text-sm text-gray-500 dark:text-gray-400">
