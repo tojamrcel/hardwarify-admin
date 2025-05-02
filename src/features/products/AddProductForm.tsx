@@ -74,7 +74,7 @@ function AddProductForm({
         <Label>Description</Label>
         <textarea
           rows={4}
-          className="resize-none rounded-md border-2 border-transparent bg-stone-100 p-1 transition-all duration-200 focus:border-red-700 focus:outline-0"
+          className="resize-none rounded-md border-2 border-transparent bg-stone-100 p-1 transition-all duration-200 focus:border-red-700 focus:outline-0 dark:bg-gray-800 dark:text-gray-400"
           {...register("description", {
             required: "Description is required",
           })}
@@ -86,7 +86,7 @@ function AddProductForm({
       <FormRow>
         <Label>Category</Label>
         <select
-          className="h-10 rounded-md border-2 border-transparent bg-stone-100 px-2 text-gray-700 transition-colors duration-200 focus:border-red-700 focus:outline-0"
+          className="h-10 rounded-md border-2 border-transparent bg-stone-100 px-2 text-gray-700 transition-colors duration-200 focus:border-red-700 focus:outline-0 dark:bg-gray-800 dark:text-gray-400"
           {...register("category", {
             required: "Category is required",
           })}
@@ -136,7 +136,7 @@ function AddProductForm({
           <input
             type="file"
             accept="image/*"
-            className="tranistion-all text-gray-600 duration-200 file:rounded-md file:bg-red-700 file:p-1 file:font-semibold file:text-stone-100 file:hover:bg-red-800"
+            className="tranistion-all text-gray-600 duration-200 file:rounded-md file:bg-red-700 file:p-1 file:font-semibold file:text-stone-100 file:hover:bg-red-800 dark:file:bg-red-800"
             {...register("image", {
               required: "Please upload an image.",
             })}
