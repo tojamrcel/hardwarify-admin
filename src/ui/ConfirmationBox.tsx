@@ -18,10 +18,10 @@ function ConfirmationBox({
 
   return (
     <div className="flex max-h-[10rem] max-w-[40rem] flex-col gap-[1.2rem]">
-      <h3 className="text-3xl font-bold">
+      <h3 className="text-3xl font-bold dark:text-gray-300">
         {type === "delete" ? "Delete product" : "Change bestseller status"}
       </h3>
-      <p className="mb-[1.2rem] text-lg text-zinc-800">
+      <p className="mb-[1.2rem] text-lg text-zinc-800 dark:text-gray-300">
         {type === "delete" &&
           "Are you sure you want to delete this product? This action cannot be undone."}
         {type === "bestseller" &&
@@ -30,7 +30,7 @@ function ConfirmationBox({
       <div className="flex justify-end gap-6">
         <button
           onClick={onCloseModal}
-          className="cursor-pointer text-zinc-700 hover:text-zinc-900"
+          className="cursor-pointer text-zinc-700 hover:text-zinc-900 dark:text-gray-300 dark:hover:text-gray-400"
         >
           Cancel
         </button>
