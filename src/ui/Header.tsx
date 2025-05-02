@@ -4,7 +4,7 @@ import ToggleDarkMode from "./ToggleDarkMode";
 
 function Header({ handleOpen }: { handleOpen: () => void }) {
   return (
-    <div className="flex h-20 items-center bg-stone-100 px-8">
+    <div className="flex h-20 items-center bg-stone-100 px-8 dark:bg-gray-800">
       <div className="mr-4 lg:hidden">
         <RoundedBtn size={12} textSize="2xl" onClick={handleOpen}>
           <IoMdMenu />
