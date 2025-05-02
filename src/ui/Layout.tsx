@@ -20,7 +20,7 @@ function Layout() {
       <div className="h-screen max-h-full grid-cols-[auto_1fr] grid-rows-[auto_1fr] lg:grid">
         <AppMenu />
         <Header handleOpen={handleOpenMobileNav} />
-        <div className="col-start-2 h-[90vh] overflow-auto px-8 py-2 lg:p-16">
+        <div className="col-start-2 max-h-[85dvh] overflow-auto px-8 py-2 lg:p-16">
           <Outlet />
         </div>
         <MobileNav open={isMobileNavOpen} closeFn={handleCloseMobileNav} />

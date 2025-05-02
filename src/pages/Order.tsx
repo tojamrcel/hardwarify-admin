@@ -20,7 +20,7 @@ function Order() {
   return (
     <div className="flex flex-col gap-6">
       <Title>Order #{order?.id}</Title>
-      <div className="grid grid-cols-2 gap-32">
+      <div className="grid gap-8 md:grid-cols-2 md:gap-32">
         <div className="flex flex-col gap-2">
           <h2 className="text-xl font-semibold text-gray-600 dark:text-gray-300">
             Items

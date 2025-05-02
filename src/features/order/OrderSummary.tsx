@@ -9,7 +9,7 @@ function OrderSummary({ price }: OrderSummaryProps) {
   const { order } = useOrder();
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col items-center gap-2 md:items-center">
       <h2 className="text-xl font-semibold text-gray-600 dark:text-gray-300">
         Summary
       </h2>
