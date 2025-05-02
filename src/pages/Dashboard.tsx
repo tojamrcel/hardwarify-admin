@@ -50,7 +50,7 @@ function Dashboard() {
       </div>
       <div className="grid gap-4 xl:grid-cols-2 xl:gap-16">
         <div className="flex h-96 w-full flex-col items-center justify-center rounded-md bg-stone-100 shadow-md dark:bg-gray-800">
-          <h2 className="mb-2 w-full px-8 text-left text-xl font-semibold text-gray-600 dark:text-stone-300">
+          <h2 className="mb-2 w-full px-8 text-left text-xl font-semibold text-gray-600 dark:text-gray-300">
             Orders in last 7 days
           </h2>
           {isLoadingLastOrders ? (
@@ -84,7 +84,7 @@ function Dashboard() {
           )}
         </div>
         <div className="flex h-96 w-full flex-col items-center justify-center rounded-md bg-stone-100 shadow-md dark:bg-gray-800">
-          <h2 className="mb-2 w-full px-8 text-left text-xl font-semibold text-gray-600 dark:text-stone-300">
+          <h2 className="mb-2 w-full px-8 text-left text-xl font-semibold text-gray-600 dark:text-gray-300">
             Revenue in last 7 days
           </h2>
           {isLoadingLastOrders ? (

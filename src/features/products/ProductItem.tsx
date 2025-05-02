@@ -27,7 +27,7 @@ function ProductItem({ product }: ProductItemProps) {
 
   return (
     <Modal>
-      <li className="grid grid-cols-[auto_1fr] rounded-md bg-stone-100">
+      <li className="grid grid-cols-[auto_1fr] rounded-md bg-stone-100 dark:bg-gray-800">
         <img
           src={image}
           alt={name}
@@ -38,8 +38,12 @@ function ProductItem({ product }: ProductItemProps) {
         <div className="relative flex h-full flex-col justify-center px-4">
           <div className="flex items-center gap-2">
             {isBestseller && <BestsellerBadge />}
-            <h2 className="font-semibold text-gray-600">{name}</h2>
-            <span className="text-sm text-gray-500">#{id}</span>
+            <h2 className="font-semibold text-gray-600 dark:text-gray-300">
+              {name}
+            </h2>
+            <span className="text-sm text-gray-500 dark:text-gray-400">
+              #{id}
+            </span>
           </div>
           <div className="flex items-center gap-2">
             <p className={`text-gray-500 ${discount ? "line-through" : ""}`}>

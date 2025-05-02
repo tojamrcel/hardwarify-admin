@@ -11,7 +11,7 @@ function RoundedBtn({ children, size, textSize, onClick }: RoundedBtnProps) {
   return (
     <button
       onClick={onClick}
-      className={`w-${size} h-${size} transition-color flex items-center justify-center rounded-full text-${textSize} text-gray-700 duration-200 hover:cursor-pointer hover:bg-gray-200 hover:text-gray-800`}
+      className={`w-${size} h-${size} transition-color flex items-center justify-center rounded-full text-${textSize} text-gray-700 duration-200 hover:cursor-pointer hover:bg-gray-200 hover:text-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-400`}
     >
       {children}
     </button>

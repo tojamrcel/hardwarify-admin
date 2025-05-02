@@ -17,7 +17,7 @@ function ProductsList({ searchValue }: { searchValue: string }) {
   if (!data?.products?.length)
     return (
       <div className="my-5">
-        <p className="text-center text-lg text-gray-500">
+        <p className="text-center text-lg text-gray-500 dark:text-gray-400">
           We could not find product that you're looking for :(
         </p>
       </div>
