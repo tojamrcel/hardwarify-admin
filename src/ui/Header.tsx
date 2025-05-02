@@ -10,7 +10,7 @@ function Header({ handleOpen }: { handleOpen: () => void }) {
           <IoMdMenu />
         </RoundedBtn>
       </div>
-      <h1 className="text-3xl font-semibold tracking-tight text-gray-800 lg:hidden">
+      <h1 className="text-3xl font-semibold tracking-tight text-gray-800 lg:hidden dark:text-gray-300">
         hardwarify
       </h1>
       <div className="ml-auto flex w-10 justify-center">
