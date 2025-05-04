@@ -143,7 +143,8 @@ export async function updateProduct(product: Product) {
     .eq("id", product.id)
     .select();
 
-  if (error) throw new Error("There was an error while updating the product.");
+  if (!data?.length || error)
+    throw new Error("There was an error while updating the product.");
 
   return data;
 }

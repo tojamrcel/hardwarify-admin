@@ -11,6 +11,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Protected from "./ui/Protected";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { DarkModeProvider } from "./contexts/DarkModeContext";
+import { Toaster } from "react-hot-toast";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,7 @@ function App() {
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>
+        <Toaster position="top-center" />
       </DarkModeProvider>
     </QueryClientProvider>
   );
