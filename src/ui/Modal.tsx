@@ -71,7 +71,9 @@ function Window<T extends { onCloseModal?: () => void }>({
         >
           <HiXMark />
         </button>
-        <div>{cloneElement(children, { onCloseModal: close } as T)}</div>
+        <div className="w-full sm:w-auto">
+          {cloneElement(children, { onCloseModal: close } as T)}
+        </div>
       </div>
     </div>,
     document.body,

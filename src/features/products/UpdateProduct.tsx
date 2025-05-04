@@ -10,7 +10,7 @@ function UpdateProduct({
   onCloseModal?: () => void;
 }) {
   return (
-    <div className="flex w-auto flex-col gap-2 md:w-[40rem]">
+    <div className="flex w-full flex-col gap-2 sm:w-auto md:w-[40rem]">
       <Title>Edit product</Title>
       <AddProductForm product={product} onCloseModal={onCloseModal} />
     </div>

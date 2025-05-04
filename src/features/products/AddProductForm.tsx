@@ -55,7 +55,7 @@ function AddProductForm({
 
   return (
     <form
-      className={`flex ${isEditing ? "w-full" : "w-1/2"} flex-col gap-2`}
+      className={`flex ${isEditing ? "w-full" : "w-full sm:w-1/2"} flex-col gap-2`}
       onSubmit={handleSubmit(onSubmit)}
     >
       <FormRow>

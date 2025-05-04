@@ -12,7 +12,9 @@ function LoginForm() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginData>();
+  } = useForm<LoginData>({
+    defaultValues: { email: "admin@admin.com", password: "admin1234" },
+  });
 
   function onSubmit(data: LoginData) {
     login(data);
