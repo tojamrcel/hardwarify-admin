@@ -3,6 +3,7 @@ import OrderSummary from "../features/order/OrderSummary";
 import Title from "../ui/Title";
 import useOrder from "../features/order/useOrder";
 import Spinner from "../ui/Spinner";
+import Button from "../ui/Button";
 
 function Order() {
   const { order, isLoading, error } = useOrder();
@@ -13,9 +14,20 @@ function Order() {
         <Spinner />
       </div>
     );
-  if (error) return <div>Error: {error.message}</div>;
 
-  if (!order) return <div>No order found</div>;
+  if (!order || error)
+    return (
+      <div className="flex h-1/2 flex-col items-center justify-center gap-2 dark:text-gray-300">
+        <h2 className="text-3xl">
+          We couldn't find the order you looking for.
+        </h2>
+        <div>
+          <Button link="/orders" type="secondary">
+            Go back to orders.
+          </Button>
+        </div>
+      </div>
+    );
 
   return (
     <div className="flex flex-col gap-6">
