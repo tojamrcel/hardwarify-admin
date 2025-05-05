@@ -14,7 +14,7 @@ function ProductsList({ searchValue }: { searchValue: string }) {
       </div>
     );
 
-  if (!data?.products?.length)
+  if (error || !data?.products?.length)
     return (
       <div className="my-5">
         <p className="text-center text-lg text-gray-500 dark:text-gray-400">
@@ -31,7 +31,6 @@ function ProductsList({ searchValue }: { searchValue: string }) {
             <ProductItem product={product} key={product.id} />
           ))}
         </Menus>
-        {error && <p className="text-center text-red-700">{error.message}</p>}
       </ul>
       <Pagination count={data?.count} />
     </>

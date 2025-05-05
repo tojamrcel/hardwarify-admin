@@ -23,7 +23,13 @@ function Dashboard() {
     );
 
   if (error || lastOrdersError || !stats || !lastOrdersStats)
-    throw new Error("Couldn't fetch stats");
+    return (
+      <div className="flex h-1/2 items-center justify-center gap-2 text-gray-700 dark:text-gray-300">
+        <h2 className="text-3xl">
+          There was an error loading the data. Try again later.
+        </h2>
+      </div>
+    );
 
   const { numOrders, toBeShipped, ordersToday } = stats;
   const { revenueData, ordersData } = lastOrdersStats;
