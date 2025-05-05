@@ -17,7 +17,7 @@ function Order() {
 
   if (!order || error)
     return (
-      <div className="flex h-1/2 flex-col items-center justify-center gap-2 dark:text-gray-300">
+      <div className="flex h-1/2 flex-col items-center justify-center gap-2 text-gray-700 dark:text-gray-300">
         <h2 className="text-3xl">
           We couldn't find the order you looking for.
         </h2>
